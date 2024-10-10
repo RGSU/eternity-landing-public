@@ -1,0 +1,48 @@
+// Variables
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Options
+
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-grid-classes = true
+
+// Grid columns
+
+// Set the number of columns and specify the width of the gutters.
+$grid-columns = 12
+$grid-gutter-width-base = 1.25em
+
+// Using v4 alpha variable definition
+$grid-gutter-widths = {
+  xs: $grid-gutter-width-base
+  //   sm: $grid-gutter-width-base, // 20px
+  //   md: $grid-gutter-width-base, // 20px
+  //   lg: $grid-gutter-width-base, // 20px
+  //   xl: $grid-gutter-width-base  // 20px
+}
+
+// Grid breakpoints
+
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints = {
+  xs: 0,        // Extra small screen / phone
+  sm: 22.5em,   // Small screen / phone
+  sd: 30em,     // Phone landscape
+  md: 48em,     // Medium screen / tablet
+  lg: 64em,     // Large screen / desktop
+  xl: 80em,     // Extra large screen / wide desktop
+  xxl: 90px     // Extra extra large screen / Macbook desktop
+}
+
+// Grid containers
+
+// Define the maximum width of `.container` for different screen sizes.
+// $container-max-widths = {
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1200px,
+//   xxl: 1400px
+// }

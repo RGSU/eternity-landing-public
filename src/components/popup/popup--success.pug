@@ -1,0 +1,11 @@
+include ./popup
+
+mixin popup--success()
+  +popup(id="popup-success" mod="success middle")&attributes(attributes)
+    .popup__success
+      .popup__success-main
+        .popup__success-title Ваш запрос успешно отправлен!
+        button(type="button" aria-label="Закрыть" data-popup-close="").popup__btn-close
+      .popup__success-content(data-lenis-prevent)
+        p Спасибо за&nbsp;обращение в&nbsp;юридическую клинику и&nbsp;доверие к&nbsp;нам! В&nbsp;скором времени с&nbsp;вами свяжутся сотрудники клиники для уточнения запроса.
+        p Хорошего дня!

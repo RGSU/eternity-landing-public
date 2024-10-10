@@ -1,0 +1,191 @@
+.video-player
+  position relative
+  overflow hidden
+  border-radius 12px
+
+  &--review
+    margin-bottom 0
+    border-radius 30px
+
+  &__video-container
+    position relative
+    z-index 10
+    display block
+    ^[0]--overlay &
+      &::after
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        z-index 12
+        background-image linear-gradient(180deg, rgba(9,18,31,0) 0%, rgba(9,18,31,0) 54%, rgba(9,18,31,1) 100%)
+        content ""
+        pointer-events auto
+    video
+      &::-webkit-media-controls
+        display none
+      &::-webkit-media-controls-play-button
+        display none
+      &::-webkit-media-controls-timeline
+        display none
+      &::-webkit-media-controls-volume-slider
+        display none
+      &::-webkit-media-controls-fullscreen-button
+        display none
+
+    ^[0]--rutube &
+      width 100%
+      height 0
+      overflow hidden
+      iframe
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+
+    ^[0]--review &
+      display flex
+      align-items center
+      justify-content center
+      height 540px
+      +desktop()
+        height 640px
+      video
+        max-width unset
+        height 100%
+
+  &__top
+    position absolute
+    top 15px
+    left 15px
+    z-index 25
+    +desktop()
+      top 30px
+      left 30px
+
+  &__toolbar
+    position absolute
+    right 16px
+    bottom 8px
+    left 12px
+    z-index 25
+    display flex
+    flex-shrink 0
+    gap rem(16px)
+    align-items center
+    ^[0]--review &
+      right 15px
+      bottom 15px
+      left 15px
+      gap rem(10px)
+      align-items flex-end
+      justify-content space-between
+      color var(--color-white)
+      +desktop()
+        right 30px
+        bottom 26px
+        left 30px
+        gap rem(26px)
+    +desktop()
+      right 20px
+      bottom 12px
+
+  &__name
+    margin 0
+    ^[0]--review &
+      font-weight 600
+      font-size rem(20px)
+      +desktop()
+        font-size rem(24px)
+
+  &__stars
+    display flex
+    flex-shrink 0
+    gap 5px
+    align-items center
+    padding-bottom 0
+    font-weight 600
+    font-size rem(18px)
+    +desktop()
+      padding-bottom 4px
+      font-size rem(20px)
+    .icon
+      flex-shrink 0
+      size 20px
+
+  &__btn-play
+    display flex
+    flex 0 0 auto
+    align-items center
+    justify-content center
+    margin-right auto
+    size rem(40px)
+    padding 0
+    color var(--color-white)
+    background none
+    border none
+    ^[0]--review &
+      .icon
+        size rem(24px)
+        +desktop()
+          size rem(40px)
+    .icon
+      flex 0 0 auto
+      size rem(24px)
+      &:nth-child(1)
+        display inline-block
+      &:nth-child(2)
+        display none
+    &.active
+      .icon
+        &:nth-child(1)
+          display none
+        &:nth-child(2)
+          display inline-block
+
+  &__likes
+  &__views
+    display inline-flex
+    gap rem(8px)
+    align-items center
+    padding 0
+    color var(--color-white)
+    font-weight 600
+    font-size rem(18px)
+    line-height 1.2
+    text-decoration none
+    background none
+    border none
+    .icon
+      flex 0 0 auto
+      size rem(20px)
+
+  &__likes
+    transition all .3s ease
+    &:hover
+    &:focus-visible
+      color var(--color-blue-60)
+      text-decoration none
+    .icon
+      position relative
+      top -2px
+
+
+  &__duration
+    position absolute
+    top 10px
+    right 10px
+    z-index 25
+    display inline-block
+    padding 3px 8px 2px
+    color var(--color-white)
+    font-weight 400
+    font-size rem(14px)
+    line-height 1.4
+    background rgba(7, 14, 24, .2)
+    border-radius 4px
+    pointer-events none
+    &:empty
+      display none

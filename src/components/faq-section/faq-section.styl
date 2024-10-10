@@ -1,0 +1,23 @@
+.faq-section
+  position relative
+  display flex
+  flex-direction column
+  &::before
+    position absolute
+    right -100px
+    bottom 100px
+    z-index -1
+    size 742px
+    background-color rgba(167, 19, 115, .4)
+    border-radius 100%
+    filter blur(350px)
+    content ''
+
+  &__box
+    display flex
+    flex-direction column
+    gap rem(32px)
+    +desktop()
+      gap rem(64px)
+
+

@@ -1,0 +1,22 @@
+include ./popup
+include ../form/form--callback
+
+mixin popup--contacts()
+  +popup(id="popup-contacts" mod="smaller contacts")&attributes(attributes)
+    .popup__contacts
+      .popup__contacts-main
+        .popup__section
+          .popup__contacts-heading
+            .popup__contacts-title Контакты
+            button(type="button" aria-label="Закрыть" data-popup-close="").popup__btn-close
+          .popup__contacts-bars
+            .popup__contacts-bar 
+              .popup__contacts-bar-title Основной телефон
+              a(href="tel:+74952556767").popup__contacts-bar-link 7 (495) 255-67-67
+            .popup__contacts-bar  
+              .popup__contacts-bar-title Дополнительный телефон
+              a(href="tel:+74952556767").popup__contacts-bar-link 7 (495) 255-67-67
+        .popup__contacts-menu
+          .popup__contacts-menu-title Мы можем вам перезвонить
+          p.popup__contacts-menu-subtitle Отправьте заявку на&nbsp;консультацию, и&nbsp;мы&nbsp;вам перезвоним в&nbsp;течение часа
+          +form--callback(id="form-callback-contacts").popup__contacts-menu-form

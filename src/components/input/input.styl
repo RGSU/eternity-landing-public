@@ -1,0 +1,51 @@
+.input
+  display block
+  width 100%
+  height rem(56px)
+  padding 0 rem(16px)
+  color var(--text-color)
+  font-weight 400
+  font-size rem(16px)
+  font-family $font-family
+  font-variant-numeric lining-nums proportional-nums
+  line-height 1.5
+  background-color var(--color-white)
+  background-clip padding-box
+  border 1px solid var(--color-grey-40)
+  border-radius rem(8px)
+  transition all .2s ease
+  appearance none
+  &:invalid
+    box-shadow none
+  &:hover
+    border-color var(--color-blue-60)
+  &:focus-visible
+    border-color var(--color-blue-60)
+    outline 3px solid var(--color-blue-20)
+  &::placeholder
+    color var(--color-grey-60)
+    opacity 1
+  &:disabled
+    color var(--color-grey-60)
+    background-color var(--color-grey-10)
+    border-color var(--color-grey-40)
+    pointer-events none
+  &:-webkit-autofill
+    transition background-color 10000000s ease-out
+
+  .is-invalid &
+    color var(--error-color)
+    border-color var(--error-color)
+
+
+  &--border-white
+    color var(--color-white)
+    background-color transparent
+    border-color var(--color-white)
+    &:hover
+      border-color var(--color-blue-20)
+    &:focus
+      border-color var(--color-blue-20)
+      outline 2px solid var(--color-blue-40)
+    &::placeholder
+      color var(--color-blue-20)

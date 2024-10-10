@@ -1,0 +1,23 @@
+include ../collapse/collapse
+
+mixin faq()
+  -
+    const props = initComponent('faq', attributes, ['items']);
+
+  .faq&attributes(attributes)
+    - if (Array.isArray(props.items))
+      each item, num in props.items
+        +faq__item(content-id=`${props.id}-content-${(num + 1)}` question!=item.question answer!=item.answer parent=props["single-open"] && props.id link=item.link link-text!=item.linkText)
+    - else
+      block
+
+mixin faq__item()
+  -
+    const props = initComponent('component', attributes, ['content-id', 'question','answer','parent']);
+    const parent = props.parent ? `#${props.parent}` : false;
+
+  article.faq__item&attributes(attributes)
+    h3.faq__question
+      button(type="button" data-collapse=`#${props["content-id"]}` aria-expanded="false" aria-controls=props["content-id"]).faq__question-button!= props.question
+        span.faq__question-button-icon
+    +collapse-collapse(id=props["content-id"] data-expanded="false" data-parent=parent).faq__answer!= props.answer

@@ -1,0 +1,27 @@
+include ../logo/logo
+include ../icon/icon
+include ../button/button
+include ../menu-btn/menu-btn
+
+mixin header()
+  header.header&attributes(attributes)
+    .header__wrapper
+      .header__container
+        +logo(tag="a" href="home.html").header__logo
+        .header__nav
+          .header__nav-sections
+            a(href="#").header__nav-link О проекте 
+            a(href="#").header__nav-link Медиа
+            a(href="#").header__nav-link Тарифы
+            a(href="#").header__nav-link Частые вопросы
+          .header__nav-bottom
+            .header__nav-links
+              a(href="").header__nav-link Информация о&nbsp;АО
+              a(href="").header__nav-link Информация о&nbsp;партнёрах
+              a(href="").header__nav-link Политика конфиденциальности <br> и&nbsp;защита персональных данных
+            .header__nav-buttons
+              +button(tag="a" label="Личный кабинет" mod="secondary-outline" outline ripple).js-btn-ripple
+              +button(tag="a" label="Телеграм-бот" icon="social-telegram" mod="secondary-outline icon" outline ripple).js-btn-ripple
+        .header__menu
+          +button(tag="a" label="Личный кабинет" mod="secondary-outline" ripple outline).header__menu-btn.header__menu-btn--desktop.js-btn-ripple
+          +menu-btn(data-target="nav").header__menu-burger

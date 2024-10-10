@@ -1,0 +1,92 @@
+.field
+  display flex
+  flex-direction column
+
+  &__label
+    display block
+    margin 0 0 .5em
+    color var(--color-grey-900)
+    font-weight 500
+    font-size rem(16px)
+    line-height 1.4
+
+  &__required
+    color var(--color-red)
+
+  &__control
+    position relative
+    color var(--color-grey-600)
+    font-weight 400
+    font-size rem(16px)
+    line-height 1.4
+    p
+      margin 0 0 1em
+      &:last-child
+        margin-bottom 0
+
+    &--required
+      &::before
+        position absolute
+        top 50%
+        left -7px
+        z-index 120
+        display block
+        margin-top -7px
+        background-color #d91d40
+        border 3px solid #fff
+        border-radius 50%
+        content ""
+        size 14px
+
+  &__hint
+    display block
+    order 10
+    margin 6px 0 0
+    color var(--text-blind-color)
+    font-size rem(12px)
+
+  &__password-toggle
+    position absolute
+    top 50%
+    right 10px
+    z-index 20
+    display inline-flex
+    align-items center
+    justify-content center
+    margin-top -20px
+    padding 0
+    color var(--color-grey-500)
+    background-color transparent
+    border none
+    size 40px
+    &:hover
+      color var(--color-hover)
+    &:focus-visible
+      color var(--color-hover)
+      outline none
+      box-shadow 0 0 0 4px var(--color-blue-300)
+    input[type="text"] + &
+      color var(--color-blue-400)
+    input:placeholder-shown + &
+      display none
+
+    .icon
+      flex 0 0 auto
+      size 20px
+
+  // Модификаторы
+  &--top-shift
+    & ^[0]__control
+      +desktop()
+        margin-top rem(24px)
+
+  &--second
+    & ^[0]__label
+      opacity 0
+      +below(80em)
+        visually-hidden()
+
+  // &--label-bigger
+  //   ^[0]__label
+  //     font-weight 600
+  //     font-size rem(18px)

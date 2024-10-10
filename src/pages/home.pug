@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+include ../components/home-page/home-page
+
+block append data
+  -
+    page.name = 'home';
+    page.title = 'Главная страница';
+
+block main
+  +home-page()

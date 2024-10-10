@@ -1,0 +1,52 @@
+include ../validator/validator
+include ../icon/icon
+
+mixin inputbox()
+  -
+    const props = initComponent('inputbox', attributes, ['label', 'for', 'icon', 'btn-clear', 'btn-view']);
+
+    if (props.label) attributes.class += ' inputbox--label';
+
+  .inputbox&attributes(attributes)
+    block
+    - if (props.label)
+      label(for=props.for).inputbox__label!= props.label
+    - if (props['btn-clear'])
+      +inputbox__btn-clear()
+    - if (props['btn-view'])
+      +inputbox__btn-view()
+    - if (props['icon'])
+      +inputbox__icon(props['icon'])
+
+//- input__label
+mixin inputbox__label(label)
+  span.inputbox__label&attributes(attributes)!= label
+    block
+
+//- input__icon
+mixin inputbox__icon(icon)
+  span.inputbox__icon&attributes(attributes)
+    - if (icon)
+      +icon(icon)
+    block
+
+//- input__btn-clear
+mixin inputbox__btn-clear()
+  -
+    const props = initComponent('inputbox__btn-clear', attributes, ['icon']);
+
+  button(type="button" aria-label="Очистить").inputbox__btn-clear&attributes(attributes)
+    - if (icon)
+      +icon(icon)
+    block
+
+//- input__btn-view
+mixin inputbox__btn-view()
+  -
+    const props = initComponent('inputbox__btn-view', attributes, ['icon']);
+    icon = icon || 'eye';
+
+  button(type="button" aria-label="Показать/Скрыть пароль").inputbox__btn-view&attributes(attributes)
+    - if (icon)
+      +icon(icon)
+    block

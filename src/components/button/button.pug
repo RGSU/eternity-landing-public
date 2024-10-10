@@ -1,0 +1,33 @@
+include ../icon/icon
+
+mixin button()
+  -
+    const props = initComponent('button', attributes, ['tag', 'label', 'icon', 'doubleIcon', 'ripple', 'outline']);
+
+    if (attributes.href) props.tag = 'a';
+
+    props.tag = props.tag || 'button';
+
+    if ((props.tag === 'button') && (!attributes.type)) attributes.type = 'button';
+
+    if (props.tag === 'a') {
+      attributes.role = 'button';
+      attributes.href = attributes.href || '#';
+    }
+
+  #{props.tag}.button&attributes(attributes)
+    span.button__inner
+      - if (props.outline)
+        span.button__stroke
+      - if (props.ripple)
+        span.button__fill
+          span.button__fill-ripple
+      - if (props.icon)
+        +icon(props.icon).button__icon
+        - if (props.label)
+          span.button__label!= props.label
+        - if (props.doubleIcon)
+          +icon(props.icon).button__icon
+      - else if (props.label)
+        span.button__label!= props.label
+    block

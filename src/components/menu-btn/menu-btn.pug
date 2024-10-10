@@ -1,0 +1,9 @@
+mixin menu-btn()
+  -
+    const props = initComponent('menu-btn', attributes, []);
+  
+  button(type="button" aria-label="Меню").menu-btn&attributes(attributes)
+    span.menu-btn__icon
+      span.menu-btn__line
+      span.menu-btn__line
+      span.menu-btn__line

@@ -1,0 +1,63 @@
+.tooltip
+  display flex
+  flex 0 0 auto
+  &.active
+    position relative
+    & ^[0]__window
+      display block
+      opacity 1
+      animation fadein .2s ease
+    & ^[0]__btn
+      &::before
+        display block
+        opacity 1
+        animation fadein .2s ease
+
+  &__btn
+    position relative
+    margin 0
+    padding 0
+    color var(--text-blind-color)
+    background none
+    border 0
+    transition all .2s ease
+    &::before
+      position absolute
+      top calc(100% + 2px)
+      left 50%
+      display none
+      color transparent
+      border-style solid
+      border-right 5px solid transparent
+      border-bottom 5px solid #55575b
+      border-left 5px solid transparent
+      transform translateX(-50%)
+      opacity 0
+      content ''
+    &:hover
+      color var(--color-white)
+
+  &__icon
+    size rem(24px)
+
+  &__window
+    position absolute
+    top calc(100%)
+    left 50%
+    z-index 1
+    display none
+    width 180px
+    padding-top 8px
+    transform translateX(-50%)
+    opacity 0
+    &-text
+      padding rem(12px) rem(16px)
+      font-size rem(12px)
+      background-color #55575b
+      border-radius rem(12px)
+
+@keyframes fadein
+  from
+    opacity 0
+  to
+    opacity 1

@@ -1,0 +1,6 @@
+mixin scripts()
+  if (maps == "yandex")
+    script(async src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=initYandexMap")
+
+  if (maps == "google")
+    script(async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap")

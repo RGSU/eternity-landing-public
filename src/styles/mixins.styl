@@ -1,0 +1,576 @@
+container($max-width = 1440px)
+  width 100%
+  max-width $max-width
+  margin-right auto
+  margin-left auto
+  padding-right 16px
+  padding-left 16px
+  +desktop()
+    padding-right 40px
+    padding-left 40px
+
+container--medium($max-width = 980px)
+  width 100%
+  max-width $max-width
+  margin-right auto
+  margin-left auto
+  padding-right 16px
+  padding-left 16px
+  +desktop()
+    padding-right 40px
+    padding-left 40px
+
+below($maxWidth)
+  if unit($maxWidth) == "em"
+    $maxWidth = unit((unit($maxWidth, "") * 16 - 1) / 16, "em")
+  if unit($maxWidth) == "px"
+    $maxWidth = unit(unit($maxWidth, "") - 1, "px")
+
+  @media (max-width $maxWidth)
+    {block}
+
+above($minWidth)
+  @media (min-width $minWidth)
+    {block}
+
+desktop()
+  @media (min-width $desktop)
+    {block}
+
+mobile()
+  $maxWidth = $desktop
+  if unit($maxWidth) == "em"
+    $maxWidth = unit((unit($maxWidth, "") * 16 - 1) / 16, "em")
+  if unit($maxWidth) == "px"
+    $maxWidth = unit(unit($maxWidth, "") - 1, "px")
+
+  @media (max-width $maxWidth)
+    {block}
+
+between($minWidth, $maxWidth)
+  if unit($maxWidth) == "em"
+    $maxWidth = unit((unit($maxWidth, "") * 16 - 1) / 16, "em")
+
+  @media (min-width $minWidth) and (max-width $maxWidth)
+    {block}
+
+// container-type inline-size
+// add to container:
+// container-type inline-size
+above-container(containerWidth, viewportWidth = "")
+  u = unit(containerWidth)
+
+  @container (min-width: {containerWidth}{u})
+    &
+      {block}
+
+  // fallback
+  if (viewportWidth)
+    @media (min-width viewportWidth)
+      @supports not (container-type: inline-size)
+        &
+          {block}
+
+ls(ls = 0)
+  letter-spacing unit(ls/100, 'em')
+
+ls-psd(ls = 0)
+  letter-spacing unit(ls/1000, 'em')
+
+visually-hidden()
+  position absolute
+  width 1px
+  height 1px
+  margin -1px
+  padding 0
+  overflow hidden
+  clip rect(0 0 0 0)
+  clip rect(0, 0, 0, 0)
+
+ellipsis()
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+
+line-clamp(lines = 3)
+  display -webkit-box
+  overflow hidden
+  -webkit-line-clamp lines
+  -webkit-box-orient vertical
+
+text-break()
+  word-wrap break-word
+  word-break break-word
+  overflow-wrap break-word
+
+text-nowrap()
+  white-space nowrap
+
+user-select-none()
+  -webkit-touch-callout none
+  -khtml-user-select none
+  user-select none
+
+// size 10px 20px
+size( values... )
+  if length( values ) == 1
+    width values[ 0 ] || auto
+    height values[ 0 ] || auto
+  else
+    width values[ 0 ] if values[ 0 ] != false
+    height values[ 1 ] if values[ 1 ] != false
+
+placeholder()
+  if selector() == "&"
+    error( "placeholder() must be called from a ruleset!" )
+  &::-webkit-input-placeholder
+    opacity 1
+    {block}
+  &:-moz-placeholder
+    opacity 1
+    {block}
+  &::-moz-placeholder
+    opacity 1
+    {block}
+  &:-ms-input-placeholder
+    opacity 1
+    {block}
+  &:input-placeholder
+    opacity 1
+    {block}
+
+no-number-spinner()
+  -webkit-appearance textfield
+  -moz-appearance textfield
+  appearance textfield
+  &::-webkit-inner-spin-button
+  &::-webkit-outer-spin-button
+    margin 0
+    -webkit-appearance none
+    -moz-appearance none
+    appearance none
+
+// Set style of selection
+selection( color )
+  ::selection
+    background color
+    {block}
+  ::-moz-selection
+    background color
+    {block}
+  img::selection
+    background transparent
+    {block}
+  img::-moz-selection
+    background transparent
+    {block}
+
+cover()
+  position relative
+  // Apply to container!
+  overflow hidden
+  img
+    position absolute
+    top 50%
+    left 50%
+    display block
+    width auto
+    min-width 100%
+    max-width none
+    height auto
+    min-height 100%
+    max-height none
+    transform translate(-50%, -50%)
+
+ratio-box( ratio = 1/1 )
+  position relative
+  overflow hidden
+  // remove units of a number
+  ratio = unit(ratio,"")
+
+  // The container's height, as a percentage of the
+  // container's width, is set by assigning
+  // padding-top to a pseudo-element.
+  &:before
+    display block
+    height 0
+    padding-top floor((1 / ratio) * 100%, 2)
+    content ''
+
+triangle(width = 10px, height = 10px, direction = 'bottom', color = #000, negative = transparent)
+  // Base triangle styles
+  width 0
+  height 0
+  background 0
+  border-style solid
+  transition all .2s ease
+
+  // Styles for each direction
+  directions = {
+    top: {
+      border-color: negative negative color negative,
+      border-width: 0 (width * .5) height (width * .5)
+    },
+    topRight: {
+      border-color: negative color negative negative,
+      border-width: 0 width height 0
+    },
+    right: {
+      border-color: negative negative negative color,
+      border-width: (height * .5) 0 (height *.5) width
+    },
+    bottomRight: {
+      border-color: negative negative color negative,
+      border-width: 0 0 height width
+    },
+    bottom: {
+      border-color: color negative negative negative,
+      border-width: height (width * .5) 0 (width * .5)
+    },
+    bottomLeft: {
+      border-color: negative negative negative color,
+      border-width: width 0 0 height
+    },
+    left: {
+      border-color: negative color negative negative,
+      border-width: (height * .5) width (height * .5) 0
+    },
+    topLeft: {
+      border-color: color negative negative negative,
+      border-width: height width 0 0
+    }
+  }
+
+  // Mixin styles for passed direction
+  styles = directions[direction]
+  {styles}
+
+// Компактная замена цвета, например, для :hover
+triangle-color(direction = 'bottom', color = inherit, negative = transparent)
+  directions = {
+    top: {
+      border-color: negative negative color negative
+    },
+    topRight: {
+      border-color: negative color negative negative
+    },
+    right: {
+      border-color: negative negative negative color
+    },
+    bottomRight: {
+      border-color: negative negative color negative
+    },
+    bottom: {
+      border-color: color negative negative negative
+    },
+    bottomLeft: {
+      border-color: negative negative negative color
+    },
+    left: {
+      border-color: negative color negative negative
+    },
+    topLeft: {
+      border-color: color negative negative negative
+    }
+  }
+  styles = directions[direction]
+  {styles}
+
+// Заготовка "крестика" на псевдоэлементах
+// size - длина линии крестика
+// width - толщина линии крестика
+// color - цвет линии крестика
+// radius - радиус закругления концов крестика
+cross(size = 20px, width = 2px, color = #000, radius = 0px)
+  &::before
+  &::after
+    width size
+    height width
+    background-color color
+    border-radius radius
+    transform-origin center center
+    transition all .2s ease
+    content ""
+  &::before
+    transform rotate(45deg)
+  &::after
+    transform rotate(-45deg)
+
+// Компактная замена цвета для :hover
+cross-color(color = inherit)
+  &::before
+  &::after
+    background-color color
+
+sqrt(x)
+  if x == 0
+    result = 0
+  else
+    result = 4
+    for i in (0..10)
+      result = ((result + (x / result)) / 2)
+
+// Квадратная иконка с крестиком
+// size - размер иконки
+// width - толщина линии крестика
+// color - цвет линии крестика
+// radius - радиус закругления концов крестика
+icon-cross(size = 20px, width = 2px, color = #000, radius = 0px)
+  position relative
+  width size
+  height size
+  _size = size - 3
+  length = round(sqrt(2*_size*_size))
+  cross(length, width, color, radius)
+  &::before
+  &::after
+    position absolute
+    top 50%
+    left 50%
+    margin-top -(round(width/4 + size/18))
+    margin-left -(round(size/1.6))
+
+// Компактная замена цвета для :hover
+icon-cross-color(color = inherit)
+  cross-color(color)
+
+// Заготовка иконки "стрелочки" из текущего элемента
+// size - длина грани иконки
+// width - толщина линии
+// color - цвет линии
+// direction - куда показывает стелка: left|right|top|bottom
+arrow(size = 20px, width = 3px, color = #000, direction = 'left')
+  width size
+  height size
+  border-color color
+  border-width width
+  transform rotate(45deg)
+  transition all .2s ease
+  if direction == 'top'
+    border-style solid none none solid
+  else if direction == 'right'
+    border-style solid solid none none
+  else if direction == 'bottom'
+    border-style none solid solid none
+  else if direction == 'left'
+    border-style none none solid solid
+
+// Компактная замена цвета для :hover
+arrow-color(color = inherit)
+  border-color color
+
+// Квадратная иконка со стрелочкой в псевдоэлементе
+// size - размер текущего элемента и длина грани вписанной иконки
+// width - толщина линии
+// color - цвет линии
+// direction - куда показывает стелка: left|right|top|bottom
+icon-arrow(size = 20px, width = 3px, color = #000, direction = 'left')
+  position relative
+  width size
+  height size
+  &::before
+    position absolute
+    top 50%
+    left 50%
+    display inline-block
+    content ""
+    arrow(size, width, color, direction)
+
+    if direction == 'top'
+      margin-top (-(round(size*.25)))
+      margin-left (-(round(size*.5)))
+
+    else if direction == 'right'
+      margin-top (-(round(size*.5)))
+      margin-left (-(round(size*.75)))
+
+    else if direction == 'bottom'
+      margin-top (-(round(size*.75)))
+      margin-left (-(round(size*.5)))
+
+    else if direction == 'left'
+      margin-top (-(round(size*.5)))
+      margin-left (-(round(size*.25)))
+
+// Компактная замена цвета для :hover
+icon-arrow-color(color = inherit)
+  &::before
+    arrow-color(color)
+
+// Clearfix
+cf()
+  &:before
+  &:after
+    display table
+    content ""
+  &:after
+    clear both
+  // stylelint-disable-next-line
+  *zoom 1
+
+// Grid
+
+_grid-row($gutterX = 0, $gutterY = 0)
+  display flex
+  flex-flow row wrap
+  if ($gutterX != 0)
+    margin-right -.5*$gutterX
+    margin-left -.5*$gutterX
+  if ($gutterY != 0)
+    margin-top -1*$gutterY
+    margin-bottom $gutterY
+    &:last-child
+      margin-bottom 0
+
+_grid-col($width = auto, $gutterX = 0, $gutterY = 0)
+  max-width 100%
+  word-break break-word
+  if ($width == auto)
+    flex 1 1 0px
+    width auto
+    -ms-flex-negative 1
+    -ms-flex-positive 1
+  else
+    flex 0 0 auto
+    width "calc(%s - %s)" % ($width $gutterX)
+  if ($gutterX != 0)
+    margin-right .5*$gutterX
+    margin-left .5*$gutterX
+  if ($gutterY != 0)
+    margin-top $gutterY
+
+
+// Responsive font-size by calc function
+fsr($min-font, $max-font, $min-width = 320px, $max-width=1100px)
+  font-size $min-font
+
+  @media (min-width $min-width)
+    font-size s('calc( %s + (%s - %s) * ((100vw - %s) / (%s - %s)) )', $min-font, remove-unit($max-font), remove-unit($min-font), $min-width, remove-unit($max-width), remove-unit($min-width))
+
+  @media (min-width $max-width)
+    font-size $max-font
+
+
+rem(value, base = 16px)
+  u = unit(value)
+  base = unit(base, "")
+
+  if (u == "px")
+    return unit((value / base), "rem")
+  else
+    return unit(value, u)
+
+lh(value)
+  line-height unit(value,'')
+
+ff()
+  font-family $font-family
+
+fz(size)
+  font-size rem(size)
+
+f(size = 16px, weight = 400, lh = 1.2)
+  font-weight weight
+  font-size rem(size)
+  font-family $font-family
+  line-height lh
+
+bg-webp(originURL, retina = false)
+  webpURL = pathjoin(dirname(originURL), basename(originURL, extname(originURL)) + ".webp")
+  originURLRetina = pathjoin(dirname(originURL), basename(originURL, extname(originURL)) + "@2x" + extname(originURL))
+  webpURLRetina = pathjoin(dirname(originURL), basename(originURL, extname(originURL)) + "@2x.webp")
+  .webp &
+    background-image url(webpURL)
+  .no-webp &
+    background-image url(originURL)
+  if (retina)
+    .webp.retina &
+      background-image url(webpURLRetina)
+    .no-webp.retina &
+      background-image url(originURLRetina)
+
+shadow()
+  box-shadow 0 8px 16px rgba(0,0,0,.15)
+
+shadow-small()
+  box-shadow 0 2px 4px rgba(0,0,0,.075)
+
+shadow-big()
+  box-shadow 0 16px 48px rgba(0,0,0,.175)
+
+// Миксин применяется к изображению.
+// Изображение должно быть внутри контейнера с заданными размерами и overflow hidden
+object-fit-image(fit = cover)
+  width 100%
+  height 100%
+  object-fit fit
+  object-position center
+
+// wrapper to removes/ignores :hover css style on touch devices
+hover()
+  @media (hover hover) and (pointer fine)
+    &:hover
+      {block}
+
+hover-focus()
+  @media (hover hover) and (pointer fine)
+    &:hover
+    &:focus
+      {block}
+
+focus-visible()
+  &:focus-visible
+  &.focus-visible
+    {block}
+
+b(val) // b for bracket
+  unquote("[") + val + unquote("]")
+
+// Custom property with fallback
+variable(property, variable, fallback)
+  {property} fallback
+  {property} var(variable)
+
+font-smoothing(active = true)
+  if active == true
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+  else
+    -webkit-font-smoothing subpixel-antialiased
+    -moz-osx-font-smoothing auto
+
+retina-query(media = all, density = 1)
+  media = join(" ", media)
+  query = media + " and (-webkit-min-device-pixel-ratio: " + density + "), "
+  query += media + " and (min--moz-device-pixel-ratio: " + density + "), "
+  query += media + " and (-o-min-device-pixel-ratio: " + density + "/1), "
+  query += media + " and (min-device-pixel-ratio: " + density + "), "
+  query += media + " and (min-resolution: " + ceil(density * 96) + "dpi), "
+  query += media + " and (min-resolution: " + density + "dppx)"
+
+  @media query
+    {block}
+
+custom-scrollbar(width = 6px, bg-color = transparent, thumb-color = var(--primary-color))
+  overflow-x hidden
+  overflow-y auto
+  &::-webkit-scrollbar-track
+    background-color bg-color
+    -webkit-box-shadow inset 0 0 4px rgba(0,0,0,.05)
+  &::-webkit-scrollbar
+    width width
+    background-color bg-color
+  &::-webkit-scrollbar-thumb
+    background-color thumb-color
+
+custom-scrollbar-horizontal(height = 8px, bg-color = transparent, thumb-color = var(--primary-color))
+  overflow-x auto
+  overflow-y hidden
+  &::-webkit-scrollbar-track
+    background-color bg-color
+    -webkit-box-shadow inset 0 0 4px rgba(0,0,0,.05)
+  &::-webkit-scrollbar
+    height height
+    background-color bg-color
+  &::-webkit-scrollbar-thumb
+    background-color thumb-color

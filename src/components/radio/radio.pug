@@ -1,0 +1,16 @@
+mixin radio()
+  -
+    const props = initComponent('radio', attributes, ['label', 'root-attributes']);
+
+    props.class = attributes.class;
+    delete attributes.class;
+
+    attributes.id = attributes.id || uniqID('radio-');
+    attributes.type = attributes.type || 'radio';
+
+  .radio(class=props.class)&attributes(props['root-attributes'])
+    input&attributes(attributes)
+    label(for=attributes.id).radio__label
+      span.radio__check
+      - if (props.label)
+        span.radio__caption!= props.label

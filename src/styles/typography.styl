@@ -1,0 +1,231 @@
+h1
+.h1
+.title-1
+  margin 0 0 .8em
+  font-weight 600
+  font-size rem(44px)
+  line-height 1.1
+  text-break()
+  +above(64em)
+    font-size rem(88px)
+    line-height 1.2
+
+h2
+.h2
+.title-2
+  margin 1.2em 0 .8em
+  font-weight 600
+  font-size rem(40px)
+  line-height 1.2
+  text-break()
+  +above(64em)
+    font-size rem(80px)
+    line-height 1.1
+
+h3
+.h3
+.title-3
+  margin 1.2em 0 .8em
+  font-weight 600
+  font-size rem(28px)
+  line-height 1.14
+  text-break()
+  +above(64em)
+    font-size rem(56px)
+    line-height 1.3
+
+h4
+.h4
+.title-4
+  margin 1.2em 0 .8em
+  font-weight 600
+  font-size rem(24px)
+  line-height 1.25
+  text-break()
+  +above(64em)
+    font-size rem(32px)
+    line-height 1.3
+
+h5
+.h5
+.title-5
+  margin 1.2em 0 .8em
+  font-weight 600
+  font-size rem(18px)
+  line-height 1.3
+  text-break()
+  +above(64em)
+    font-size rem(24px)
+
+h6
+  margin 1em 0
+  font-weight 600
+  font-size 1em
+  line-height 1.2
+  text-break()
+
+p
+ul
+ol
+dl
+blockquote
+pre
+address
+figure
+table
+  margin-top 0
+  margin-bottom rem(20px)
+  +desktop()
+    margin-bottom rem(24px)
+
+a
+  color var(--color-link)
+  text-decoration none
+  outline-color var(--color-outline)
+  cursor pointer
+  transition color .2s ease
+  text-break()
+  &:hover
+    color var(--color-hover)
+
+button:not(:disabled)
+  outline-color var(--color-outline)
+  cursor pointer
+  font-variant-numeric lining-nums proportional-nums
+
+img
+video
+svg
+canvas
+  display inline-block
+  max-width 100%
+  height auto
+
+ol
+ul
+  padding-left rem(25px)
+  li
+    margin 0 0 rem(12px)
+    padding-left rem(12px)
+    +desktop()
+      margin 0 0 rem(16px)
+      padding-left rem(16px)
+
+b
+strong
+  font-weight 700
+i
+em
+  font-style italic
+
+table
+  width 100%
+
+mark
+.mark
+  padding .2em
+  background-color #fcf8e3
+
+small
+.small
+  font-size .8em
+
+.text-500
+  font-weight 500
+
+.text-large
+  font-size 1.5em
+
+.text-big
+  font-size rem(18px)
+  line-height 1.4
+  +desktop()
+    font-size rem(24px)
+    line-height 1.3
+
+
+.text-small
+  font-size .8em
+
+.text-mini
+  font-size .6em
+
+.text-tight
+  p&
+  p
+    margin-bottom rem(20px)
+    +desktop()
+      margin-bottom rem(24px)
+
+.text-left
+  text-align left
+
+.text-right
+  text-align right
+
+.center
+.text-center
+  text-align center
+
+pre
+code
+  overflow hidden
+  color var(--text-contrast-color)
+  font-size 1em
+  font-family "Consolas", "Courier New", "Nimbus Mono L", monospace
+  white-space pre-wrap
+  word-wrap break-word
+  tab-size 4
+
+pre
+  padding 12px
+  background #eee
+  border-left 7px solid #9bb4c7
+
+code
+  margin 0 1px
+  padding 3px 5px
+  background-color #eaf0f4
+  border-radius 6px
+
+kbd
+  margin 0 1px
+  padding 3px 4px
+  background-color #fff
+  border-radius 4px
+  box-shadow 0 0 4px 0 rgba(0,0,0,.45)
+
+
+.list
+  display flex
+  flex-direction column
+  gap rem(20px)
+  margin 0
+  padding 0
+  color var(--text-color)
+  font-weight 500
+  font-size rem(16px)
+  line-height 1.4
+  list-style none
+  &--semibold
+    font-weight 600
+  li
+    position relative
+    margin 0
+    padding 0 0 0 rem(24px)
+    &::before
+      position absolute
+      top 50%
+      left 0
+      display block
+      margin-top -4px
+      size 9px
+      background-color var(--primary-color)
+      border-radius 2px
+      transform rotate(45deg)
+      content ""
+
+ol
+  li
+    &::marker
+      color var(--primary-color)

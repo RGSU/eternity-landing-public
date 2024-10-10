@@ -1,0 +1,49 @@
+block append data
+  -
+    var validatorMsg = {
+      required: "Необходимо заполнить",
+      email: "Неправильный формат Email",
+      tel: "Требуется телефонный номер",
+      minlength: "Поле должно быть не менее ${1} символов длиной",
+      equal: "Поля должны быть одинаковыми",
+      min: "Минимальное допустимое значение - ${1}",
+      max: "Максимально допустимое значение - ${1}",
+      lowercase: "Допустимы только строчные буквы",
+      //- password: "Пароль должен содержать символов - не менее 8, цифр - не менее 1, строчных букв - не менее 1, прописных букв - не менее 1, не менее 1 символов, не являющихся буквами и цифрами, например таких как *, - или #.",
+    }
+
+    var setValidatorMsg = (attributes) => {
+      if (attributes.required) {
+        if (!attributes["data-validator-required-message"]) {
+          attributes["data-validator-required-message"] = validatorMsg.required
+        }
+    
+        if ((attributes.type === "email") && !attributes["data-validator-email-message"]) {
+          attributes["data-validator-email-message"] = validatorMsg.email
+        }
+
+        if ((attributes.type === "tel") && !attributes["data-validator-tel-message"]) {
+          attributes["data-validator-tel-message"] = validatorMsg.tel
+        }
+
+        if (attributes.minlength && !attributes["data-validator-minlength-message"]) {
+          attributes["data-validator-minlength-message"] = validatorMsg.minlength
+        }
+
+        if (attributes["data-validator-min"] && !attributes["data-validator-min-message"]) {
+          attributes["data-validator-min-message"] = validatorMsg.min
+        }
+        
+        if (attributes["data-validator-max"] && !attributes["data-validator-max-message"]) {
+          attributes["data-validator-max-message"] = validatorMsg.max
+        }
+        
+        if (attributes["data-validator-equal"] && !attributes["data-validator-equal-message"]) {
+          attributes["data-validator-equal-message"] = validatorMsg.equal
+        }
+        
+        //- if ((attributes.type === "password") && !attributes["data-validator-password-message"])
+        //-   attributes["data-validator-password-message"] = validatorMsg.password
+      }
+
+    }

@@ -1,0 +1,75 @@
+mixin collapse-toggle()
+  -
+    const stripHash = str => str.replace("#","");
+
+    const tag = attributes.tag || attributes.toggle_tag || "button";
+    const caption = attributes.caption || attributes.toggle_caption || "";
+
+    attributes["data-collapse"] = attributes.collapse || attributes["data-collapse"];
+    attributes["aria-expanded"] = attributes.expanded || attributes["aria-expanded"] || "false";
+    attributes["aria-controls"] = attributes.controls || attributes["aria-controls"] || false;
+
+    if ((tag == "button") && (!attributes.type))
+      attributes.type = "button";
+
+    if (tag == "a")
+      attributes.href=attributes["data-collapse"];
+
+    if (!attributes["aria-controls"] && attributes["data-collapse"])
+      attributes["aria-controls"] = stripHash(attributes["data-collapse"]);
+
+    const toggleWrapper = attributes.toggle_wrapper || false;
+    const toggleWrapperClass = attributes.toggle_wrapper_class || false;
+    
+    attributes.class = attributes.class || attributes.toggle_class || false;
+
+    delete attributes.collapse;
+    delete attributes.controls;
+    delete attributes.expanded;
+    delete attributes.tag;
+    delete attributes.caption;
+    delete attributes.toggle_tag;
+    delete attributes.toggle_wrapper;
+    delete attributes.toggle_wrapper_class;
+    delete attributes.toggle_class;
+    delete attributes.toggle_caption;
+
+  - if (toggleWrapper)
+    #{toggleWrapper}(class=toggleWrapperClass)
+      #{tag}(class=toggleClass)&attributes(attributes)!= caption
+  - else
+    #{tag}(class=toggleClass)&attributes(attributes)!= caption
+
+mixin collapse-collapse()
+  - 
+    const expanded = attributes.expanded || false;
+
+    attributes["data-parent"] = attributes.parent || attributes["data-parent"] || false;
+    
+    delete attributes.expanded;
+    delete attributes.parent;
+
+  .collapse(class = (expanded == true) && "show")&attributes(attributes)
+    block
+
+mixin collapse()
+  -
+    const uniqId = (prefix = "b") => prefix + '-' + Math.random().toString(36).substr(2, 9);
+    const stripHash = str => str.replace("#","");
+    
+    attributes["data-collapse"] = attributes.collapse || attributes["data-collapse"] || "#" + uniqId() + "-collapse";
+    var collapseID = stripHash(attributes["data-collapse"]);
+
+    attributes["aria-expanded"] = attributes.expanded || attributes["aria-expanded"] || "false";
+    var expanded = attributes["aria-expanded"] == "true";
+
+    var collapseClass = attributes.collapse_class || false;
+    var parent = attributes.parent || false;
+
+    delete attributes.collapse_class;
+    delete attributes.parent;
+
+  +collapse-toggle()&attributes(attributes)
+
+  +collapse-collapse(id=collapseID expanded=expanded class=collapseClass parent=parent)
+    block

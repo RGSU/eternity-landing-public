@@ -1,0 +1,64 @@
+.media
+  position relative
+  display block
+  &::before
+    position absolute
+    top -200px
+    right -350px
+    z-index -1
+    size 542px
+    background-color rgba(167, 19, 115, .4)
+    border-radius 100%
+    filter blur(150px)
+    content ''
+    +desktop()
+      filter blur(250px)
+      size 742px
+
+  &__box
+    position relative
+    display flex
+    flex-direction column
+    gap rem(32px)
+    +desktop()
+      gap rem(64px)
+    & ^[0]__visual-bg
+      position absolute
+      bottom -120px
+      left -120px
+      z-index -1
+      width 220px
+      transform rotate(-33deg)
+      +desktop()
+        bottom -220px
+        width 330px
+
+  &__content
+    display flex
+    flex-direction column
+    gap 32px
+
+  &__more-btn
+    margin 0 auto
+
+  &__panel
+    &.active
+      & ^[1]-inner
+        animation fadein .4s ease-in-out
+
+
+  &--grid
+    & ^[0]__panel-inner
+      display grid
+      grid-template-columns repeat(1, 1fr)
+      gap 20px
+      +desktop()
+        grid-template-columns repeat(2, 1fr)
+      +above(80em)
+        grid-template-columns repeat(3, 1fr)
+
+@keyframes fadein
+  from
+    opacity 0
+  to
+    opacity 1

@@ -1,0 +1,19 @@
+include ./form
+include ../field/field
+include ../select/select
+include ../button/button
+
+mixin form--instructions()
+  -
+    const props = initComponent('form', attributes, []);
+  
+    attributes.id = attributes.id || 'form-instructions';
+
+  +form().form--instructions&attributes(attributes)
+    .form__fields
+      +field(label="Основа для обучения" for=`${attributes.id}-basis` label-hidden).form__field
+        +select(name="basis" id=`${attributes.id}-basis` options=optionsBasis selected="1" data-custom-select)
+      +field(label="Уровень обучения" for=`${attributes.id}-level` label-hidden).form__field
+        +select(name="level" id=`${attributes.id}-level` options=optionsLevels selected="3" data-custom-select)
+    .form__bottom
+      +button(type="submit" label="Подобрать инструкцию").form__submit

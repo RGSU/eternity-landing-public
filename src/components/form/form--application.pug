@@ -1,0 +1,29 @@
+include ./form
+include ../field/field
+include ../inputbox/inputbox
+include ../input/input
+include ../textarea/textarea
+include ../button/button
+
+mixin form--application()
+  -
+    const props = initComponent('form', attributes, ['button-icon', 'question-field', 'variant']);
+  
+    attributes.id = attributes.id || 'form-application';
+
+  +form(method="POST" data-validate).form--application&attributes(attributes)
+    - if (props.variant === 'branch')
+      input(type="hidden" name="branch" id=`${attributes.id}-branch`)
+    .form__main
+      .form__fields
+        .field.form__field
+          +inputbox(label="Ваше имя" for=`${attributes.id}-name`)
+            +input(type="text" name="name" id=`${attributes.id}-name` placeholder=" ")
+        +field(label="Ваш телефон" for=`${attributes.id}-phone` label-hidden).form__field
+          +input(type="tel" name="phone" id=`${attributes.id}-phone` placeholder="999 999 99 99" data-intl-tel-input required)
+        .field.form__field
+          +inputbox(label="Комментарий" for=`${attributes.id}-comment` mod="textarea")
+            textarea(name="comment" id=`${attributes.id}-comment` placeholder=" ")
+      .form__bottom
+        +button(type="submit" label="Отправить заявку" icon=props['button-icon'] mod=(props['button-icon'] !== undefined) && 'icon-right').form__submit
+    .form__consent Нажимая на&nbsp;кнопку, вы&nbsp;соглашаетесь с&nbsp;<a href="#">политикой конфиденциальности</a>

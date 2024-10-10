@@ -1,0 +1,14 @@
+include ../button/button
+include ../face-canvas/face-canvas
+
+mixin intro()
+  -
+    const props = initComponent('intro', attributes, []);
+
+  section.intro&attributes(attributes)
+    +face-canvas()
+    .content-container
+      .intro__box
+        h1.intro__title Сохрани себя <br> для будущего
+        +button(tag="a" label="Присоединиться" mod="gradient").intro__button.js-btn-gradient
+    .intro__bg

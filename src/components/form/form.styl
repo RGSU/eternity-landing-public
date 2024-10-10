@@ -1,0 +1,259 @@
+.form
+  display flex
+  flex 1 0 auto
+  flex-direction column
+  gap rem(20px)
+
+  &__fields
+    display flex
+    flex-direction column
+    gap rem(20px)
+
+  &__row
+    display contents
+    +desktop()
+      --columns 1
+      display grid
+      grid-template-columns repeat(var(--columns), minmax(0, 1fr))
+      gap rem(20px) rem(12px)
+      &--2
+        --columns 2
+      &--3
+        --columns 3
+      &--4
+        --columns 4
+
+  &__double
+    --columns 1
+    display grid
+    grid-template-columns repeat(var(--columns), minmax(0, 1fr))
+    gap rem(12px)
+    +above(80em)
+      --columns 2
+
+  &__bottom
+    display flex
+    flex-direction column
+    margin-top auto
+    padding-top rem(12px)
+    +desktop()
+      align-items flex-start
+      width 100%
+      padding-top rem(12px)
+
+  &__bottom-row
+    display flex
+    flex-direction column
+    gap rem(16px)
+    align-items center
+    +desktop()
+      flex-direction row
+      justify-content space-between
+      width 100%
+
+  &__buttons
+    display flex
+    flex-direction column
+    gap rem(12px)
+    width 100%
+    +desktop()
+      flex-direction row
+      flex-wrap wrap
+      width auto
+
+  &__consent
+    margin 0
+    color var(--color-grey-60)
+    font-weight 400
+    font-size  rem(12px)
+    line-height 1.4
+    a
+      color var(--color-blue-60)
+      text-decoration none
+      &:hover
+      &:focus-visible
+        color var(--color-hover)
+        text-decoration none
+
+  &--consult
+    gap rem(32px)
+
+    & ^[0]__main
+      +desktop()
+        display grid
+        grid-template-columns 1fr auto
+        gap rem(12px)
+
+    & ^[0]__fields
+      gap rem(12px)
+      +desktop()
+        display grid
+        grid-template-columns repeat(2, 1fr)
+        gap rem(12px)
+
+    & ^[0]__bottom
+      +desktop()
+        padding-top 0
+
+  &--consult&--consult-v
+    gap rem(12px)
+    & ^[0]__main
+      +desktop()
+        display grid
+        grid-template-columns 100%
+        gap rem(12px)
+
+    & ^[0]__fields
+      +desktop()
+        display grid
+        grid-template-columns 100%
+        gap rem(12px)
+
+    & ^[0]__bottom
+      +desktop()
+        align-items center
+      .button
+        width 100%
+
+  &--consult-white
+    & ^[0]__consent
+      color var(--color-white)
+      text-align center
+      a
+        color var(--color-blue-20)
+        &:hover
+        &:focus-visible
+          color var(--color-blue-40)
+    .iti__selected-flag
+      color var(--color-white)
+    .iti__arrow
+      border-top-color color var(--color-white)
+    .iti__arrow.iti__arrow--up
+      border-bottom-color color var(--color-white)
+
+  &--instructions
+    gap rem(12px)
+
+    & ^[0]__fields
+      gap rem(12px)
+
+    & ^[0]__bottom
+      padding-top 0
+      +desktop()
+        padding-top 0
+
+    & ^[0]__submit
+      width 100%
+
+  &--calendar
+    flex 1 0 auto
+    & ^[0]__buttons
+      +desktop()
+        display flex
+        flex-direction column
+        width 100%
+
+    & ^[0]__main
+      +desktop()
+        display flex
+        flex 1 0 auto
+        flex-direction column
+
+    & ^[0]__bottom
+      height unset
+      margin-top auto
+
+  &--callback
+    & ^[0]__fields
+      gap rem(20px)
+      +desktop()
+        gap rem(32px)
+    & ^[0]__bottom
+      display flex
+      gap 18px
+      align-items flex-start
+      padding-top 24px
+      +desktop()
+        flex-direction row
+        gap 25px
+        align-items center
+        padding-top 32px
+    & ^[0]__consent
+      color var(--text-blind-color)
+      font-weight 400
+      font-size rem(16px)
+
+  &--application
+    flex 1 0 auto
+    gap rem(12px)
+    +desktop()
+      gap rem(32px)
+
+
+    & ^[0]__main
+      display flex
+      flex 1 0 auto
+      flex-direction column
+      gap rem(12px)
+
+    & ^[0]__fields
+      gap rem(12px)
+
+    & ^[0]__bottom
+      height auto
+      margin-top auto
+      +desktop()
+        padding-top 0
+
+    & ^[0]__submit
+      width 100%
+
+    & ^[0]__consent
+      text-align center
+      +desktop()
+        text-align left
+
+
+  &--confirm
+    gap rem(40px)
+
+    & ^[0]__question
+      margin 0
+      color var(--color-grey-100)
+      font-weight 600
+      font-size rem(32px)
+      line-height 1.4
+      +desktop()
+        font-size rem(20px)
+
+    & ^[0]__buttons
+      --columns 1
+      display grid
+      grid-template-columns repeat(var(--columns), minmax(0, 1fr))
+      gap rem(12px)
+      margin-top auto
+      +desktop()
+        --columns 2
+
+    & ^[0]__button
+      padding-right rem(16px)
+      padding-left rem(16px)
+      &:nth-child(2)
+        order -1
+        +desktop()
+          order unset
+
+  &--search
+    flex 0 0 auto
+  &--search-wide
+    display flex
+    flex-flow row nowrap
+    gap rem(12px)
+    align-items center
+    width 100%
+
+    & ^[0]__field
+      flex 0 1 100%
+
+    & ^[0]__submit
+      flex 0 0 auto

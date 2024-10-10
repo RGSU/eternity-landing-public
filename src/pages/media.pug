@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+include ../components/media-page/media-page
+
+block append data
+  -
+    page.name = 'media';
+    page.title = 'Медиа';
+
+block main
+  +media-page()

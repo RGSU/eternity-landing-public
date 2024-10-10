@@ -1,0 +1,38 @@
+.logo
+  display inline-flex
+  flex-flow row nowrap
+  gap 15px
+  align-items center
+  text-decoration none
+  +above(64em)
+    gap 24px
+  &:hover
+  &:focus-visible
+    & ^[0]__title
+      color var(--primary-color)
+  &__image
+    position relative
+    display block
+    flex 0 0 auto
+    size 44px
+    color var(--primary-color)
+    +above(64em)
+      size 52px
+
+    .icon
+      display block
+      size 44px
+      +above(64em)
+        size 52px
+
+      &:not(:last-child)
+        margin-bottom 3px
+
+  &__title
+    color var(--color-white)
+    font-weight 600
+    font-size 17px
+    line-height 1
+    transition all .2s ease
+    +above(64em)
+      font-size 20px

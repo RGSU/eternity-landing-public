@@ -1,0 +1,8 @@
+mixin section()
+  -
+    const props = initComponent('section', attributes, ['tag', 'heading']);
+  
+    props.tag = props.tag || "section";
+
+  #{props.tag}.section&attributes(attributes)
+    block

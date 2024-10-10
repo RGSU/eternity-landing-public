@@ -1,0 +1,40 @@
+extends ../layouts/core
+
+include ../components/ui/ui--buttons
+include ../components/ui/ui--popup
+include ../components/ui/ui--typography
+include ../components/ui/ui--grid
+
+block append data
+  - 
+    page.name = "ui-kit";
+    page.title = "UI-Kit";
+
+    data.optionsCities = [
+      { value: "moscow", text: "Москва" },
+      { value: "piter", text: "Санкт-Петербург" },
+      { value: "novosibirsk", text: "Новосибирск" },
+      { value: "omsk", text: "Омск" },
+      { value: "kazan", text: "Казань" },
+      { value: "stavropol", text: "Ставрополь" },
+      { value: "ekaterinburg", text: "Екатеринбург" },
+      { value: "voronezh", text: "Воронеж" },
+      { value: "rostov-na-donu", text: "Ростов-на-Дону" },
+      { value: "petropavlovsk-kamchatskiy", text: "Петропавловск-Камчатский" },
+      { value: "vladivostok", text: "Владивосток" },
+      { value: "krasnoyarsk", text: "Красноярск" },
+      { value: "kursk", text: "Курск" },
+      { value: "smolensk", text: "Смоленск" },
+      { value: "vladimir", text: "Владимир" },
+      { value: "volgograd", text: "Волгоград" },
+    ];
+
+block page
+  main.page__main
+    .content-wrapper
+      .content-container
+        +ui(title="UI-Kit")
+          +ui--buttons()
+          +ui--popup()
+          +ui--typography()
+          +ui--grid()

@@ -1,0 +1,168 @@
+include ../button/button
+include ../icon/icon
+include ../tooltip/tooltip
+
+mixin tariffs-table()
+  -
+    const props = initComponent('tariffs-table', attributes, []);
+
+  .tariffs-table__wrapper
+    .tariffs-table.tariffs-table--desktop&attributes(attributes)
+      .tariffs-table__head
+        .tariffs-table__th
+          .tariffs-table__th-title Возможности
+        .tariffs-table__th 
+          .tariffs-table__th-title Пробный
+          .tariffs-table__th-content 
+            .tariffs-table__th-price 0 ₽
+            .tariffs-table__th-caption Тариф не требует оплаты
+          +button(tag="a" label="Выбрать план" mod="gradient").js-btn-gradient.tariffs-table__th-btn
+        .tariffs-table__th 
+          .tariffs-table__th-title Базовый
+          .tariffs-table__th-content 
+            .tariffs-table__th-price 10 000 ₽
+            .tariffs-table__th-caption Оплата происходит единоразово
+          +button(tag="a" label="Выбрать план" mod="gradient").js-btn-gradient.tariffs-table__th-btn
+        .tariffs-table__th 
+          .tariffs-table__th-title Расширенный
+          .tariffs-table__th-content 
+            .tariffs-table__th-price 25 000 ₽
+            .tariffs-table__th-caption Оплата происходит единоразово
+          +button(tag="a" label="Выбрать план" mod="gradient").js-btn-gradient.tariffs-table__th-btn
+        .tariffs-table__th 
+          .tariffs-table__th-title Полный
+          .tariffs-table__th-content 
+            .tariffs-table__th-price 70 000 ₽
+            .tariffs-table__th-caption Оплата происходит единоразово
+          +button(tag="a" label="Выбрать план" mod="gradient").js-btn-gradient.tariffs-table__th-btn
+      .tariffs-table__body
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Доступ к клипам
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Доступ к продуктам
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+            .tariffs-table__cell-caption Доступ к демо-версиям
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Файлы и документы о прохождении каждого продукта
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+            .tariffs-table__cell-caption Пример документа PDF
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Отчёт о прохождении продуктов
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+            .tariffs-table__cell-caption Пример отчета
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Хранение цифрового образа в системе
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-caption 3 месяца
+          .tariffs-table__cell
+            .tariffs-table__cell-caption Навсегда
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Help desk 24/7
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Рекомендации от авторов продукта 
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Вопросы эксперту
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Транскрибация, редактура текста
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Возможность вносить изменения в цифровой образ
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")
+        .tariffs-table__row
+          .tariffs-table__cell.tariffs-table__cell--cat Режим «Наследствл»
+            +tooltip(mod="" text!="Помощь операторов 24/7") 
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+          .tariffs-table__cell
+            .tariffs-table__cell-icon 
+              +icon("check")

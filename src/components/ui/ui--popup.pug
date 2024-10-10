@@ -1,0 +1,66 @@
+include ./ui
+include ../button/button
+include ../popup/popup--example
+include ../popup/popup--success
+include ../popup/popup--error
+
+mixin ui--popup()
+  +ui__section(title="Popup")
+          
+    p Образец разметки попапов можно найти внизу исходного HTML-кода данной страницы
+    +ui__subsection(title="Открытие кнопкой/ссылкой")
+        
+      p Кнопка/ссылка будeт открывать попап при наличии дата-атрибута <code>data-popup-open</code> c id нужного попапа (c хэшем или без) в качестве значения:
+      pre &lt;button type="button" data-popup-open="#popup-example"&gt;Открыть popup&lt;/button&gt;
+      
+      +ui__sequence().ui__sequence--vcenter
+        +button(label="Открыть popup кнопкой" data-popup-open="#popup-example" mod="secondary" ripple).js-btn-ripple
+
+      p В ссылках id открываемого попапа (с хэшем) лучше указывать в атрибуте <code>href</code>, а дата-атрибут <code>data-popup-open</code> при этом оставлять пустым:
+      pre &lt;a href="#popup-example" data-popup-open&gt;Открыть popup&lt;/a&gt;
+
+      +ui__sequence().ui__sequence--vcenter
+        p Пример: 
+          a(href="#popup-example" data-popup-open) Открыть попап ссылкой
+      
+      p Закрывается открытый в данный момент попап при наличии в кнопке/ссылке пустого дата-атрибута <code>data-popup-close</code>. При этом будет закрыт любой попап, открытый в данный момент. Пример:
+      pre &lt;button type="button" data-popup-close&gt;Закрыть popup&lt;/button&gt;
+      
+    +ui__subsection(title="Открытие программно")
+      p Программно попап можно открыть с помощью глобального объекта <code>Popup</code>, вызвав его функцию <code>open()</code> с указанием в качестве параметра <code>id</code> (с хэшем или без) нужного попапа:
+      pre.
+        &lt;script&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;button.addEventListener("click", function() {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.Popup.open("#popup-example");
+        &nbsp;&nbsp;&nbsp;&nbsp;});
+        &lt;/script&gt;
+
+      +ui__sequence().ui__sequence--vcenter
+        +button(label="Открыть popup программно" mod="secondary" ripple).js-btn-ripple.js-popup-open
+
+      p Программно можно закрыть активный попап функцией <code>close()</code> глобального объекта <code>Popup</code>:
+      pre.
+        &lt;script&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;window.Popup.close();
+        &lt;/script&gt;
+
+    +ui__subsection(title="Примеры попапов")
+      +ui__sequence().ui__sequence--vcenter
+        +button(label="С заголовком" data-popup-open="#popup-example" mod="secondary" ripple).js-btn-ripple
+        +button(label="Без заголовка" data-popup-open="#popup-example-2" mod="secondary" ripple).js-btn-ripple
+        +button(label="Удачная отправка формы" data-popup-open="#popup-success" mod="secondary" ripple).js-btn-ripple
+        +button(label="Ошибка отправки формы" data-popup-open="#popup-error" mod="secondary" ripple).js-btn-ripple
+
+block append popups
+  +popup--example()
+  +popup--example-2()
+  +popup--success()
+  +popup--error()
+
+block append scripts
+  script(type="module").
+    document.querySelectorAll(".js-popup-open").forEach((button) => {
+      button.addEventListener("click", () => {
+        window.Popup.open("#popup-example");
+      });
+    });

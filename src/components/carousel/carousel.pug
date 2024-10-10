@@ -1,0 +1,33 @@
+include ../icon/icon
+
+mixin carousel()
+  -
+    const props = initComponent('carousel', attributes, ['pagination', 'navigation', 'counter']);
+
+  .carousel.swiper&attributes(attributes)
+    .carousel__items.swiper-wrapper
+      block
+    - if (props.mod !== 'tools')
+      - if (props.pagination)
+        .carousel__pagination
+      - if (props.navigation)
+        .carousel__navigation
+          .carousel__button-prev
+          .carousel__button-next
+    - else 
+      .carousel__tools
+        - if (props.navigation)
+          button.carousel__button-prev
+            +icon("arrow-left")
+        - if (props.pagination)
+          .carousel__pagination
+        - if (props.counter)
+          .carousel__counter
+            span.carousel__counter-current
+            span.carousel__counter-total
+        - if (props.navigation)
+          button.carousel__button-next
+            +icon("arrow-right")
+mixin carousel__item()
+  .carousel__item&attributes(attributes).swiper-slide
+    block

@@ -1,0 +1,37 @@
+.products
+  position relative
+  &::before
+    position absolute
+    top -500px
+    left -500px
+    z-index -1
+    size 742px
+    background-color rgba(167, 19, 115, .4)
+    border-radius 100%
+    filter blur(150px)
+    content ''
+    +desktop()
+      filter blur(350px)
+
+  &__container
+    +below(90em)
+      max-width 1240px
+  &__heading
+    margin-bottom rem(32px)
+    +desktop()
+      margin-bottom rem(64px)
+  &__cards
+    position relative
+    & ^[0]__visual-bg
+      position absolute
+      right -100px
+      bottom -70px
+      z-index -1
+      width 220px
+      transform rotate(15deg)
+      +desktop()
+        right -20px
+        bottom -200px
+        width 380px
+      body.is-scroll-locked &
+        transform translateY(250px)

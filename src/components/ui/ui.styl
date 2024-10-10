@@ -1,0 +1,100 @@
+.ui
+
+  &__title
+    margin-bottom 1em
+
+  &__section
+    margin-bottom 50px
+    padding-top 50px
+    border-top 2px solid var(--text-blind-color)
+
+  &__section-title
+    margin-bottom 45px
+    text-transform uppercase
+
+  &__subsection
+    padding-top 25px
+    border-top 1px dashed #ddd
+    &:not(:last-child)
+      margin-bottom 30px
+
+  &__subsection-title
+    margin-bottom 1em
+    font-weight 700
+
+  &__dark
+    display inline-block
+    padding 20px
+    background-color var(--text-color)
+    border-radius rem(8px)
+    &:not(:last-child)
+      margin-bottom 1.5rem
+
+  &__sequence
+    display flex
+    flex-flow row wrap
+    gap 20px
+    align-items flex-start
+    &:not(:last-child)
+      margin-bottom 1.5rem
+
+    &--vcenter
+      align-items center
+
+    &--vstretch
+      align-items stretch
+
+    .field
+      align-self flex-start
+      width calc(100% - 5px)
+      +above(48em)
+        width calc(50% - 10px)
+      +desktop()
+        width calc(25% - 15px)
+
+  &__table-breakpoints
+    th
+      background-color transparent
+
+  &__select
+    max-width 100%
+    option
+      max-width 100%
+      ellipsis()
+
+  .final-grade
+    &:not(:last-child)
+      margin-bottom 20px
+
+  &__color
+    display block
+    width 112px
+    text-align center
+
+  &__color-bg
+    display block
+    width 100%
+    height 80px
+    margin-bottom .4rem
+    overflow hidden
+    border 1px solid #ccc
+
+  &__color-caption
+    font-size rem(14px)
+
+  &__grid-demo
+    .row > .col
+    .row > [class^=col-]
+      span
+        display block
+        width 100%
+        margin-bottom 20px
+        padding 15px 16px
+        color var(--text-contrast-color)
+        font-size rem(15px)
+        line-height 20px
+        background-color #eee
+
+  .data-card
+    width 280px
+    min-height 310px

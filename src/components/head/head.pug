@@ -1,0 +1,40 @@
+include ../favicons/favicons
+
+mixin head()
+  head
+    meta(charset="utf-8")
+    title= page.title
+    meta(name="description" content="")
+    meta(name="keywords" content="")
+
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    block favicons
+      +favicons()
+
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="")
+    link(href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet")
+    
+    block styles
+      - if (env == "production")
+        link(rel="stylesheet" href=cacheReset("assets/css/style.min.css"))
+      - else
+        link(rel="stylesheet" href=cacheReset("assets/css/style.css"))
+      
+    - if (env == "production")
+      script(src=cacheReset("assets/js/gsap.min.js"))
+      script(src=cacheReset("assets/js/ScrollTrigger.min.js"))
+      script(src=cacheReset("assets/js/MotionPathPlugin.min.js"))
+      script(src=cacheReset("assets/js/Draggable.min.js"))
+      script(src=cacheReset("assets/js/gsapAnimations.min.js") type="module")
+      script(src=cacheReset("assets/js/app.min.js") type="module")
+      
+    - else
+      script(src=cacheReset("assets/js/gsap.min.js"))
+      script(src=cacheReset("assets/js/ScrollTrigger.min.js"))
+      script(src=cacheReset("assets/js/MotionPathPlugin.min.js"))
+      script(src=cacheReset("assets/js/Draggable.min.js"))
+      script(src=cacheReset("assets/js/gsapAnimations.js") type="module")
+      script(src=cacheReset("assets/js/app.js") type="module")

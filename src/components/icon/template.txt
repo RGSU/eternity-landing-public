@@ -1,0 +1,11 @@
+.icon
+  display inline-block
+  fill currentColor
+
+{{#shapes}}
+  &--{{base}}
+    font-size ({{height.inner}}/16)*1rem
+    width ({{width.inner}}/{{height.inner}})*1em
+    height 1em
+
+{{/shapes}}

@@ -1,0 +1,13 @@
+include ../button/button
+
+mixin form--confirm()
+  -
+    const props = initComponent('form', attributes, ['question']);
+  
+    attributes.id = attributes.id || 'form-confirm';
+
+  form(method="dialog").form.form--confirm&attributes(attributes)
+    .form__question!= props.question
+    .form__buttons
+      +button(type="submit" label="Да" value="1").form__button
+      +button(type="submit" label="Нет" value="0" mod="secondary").form__button

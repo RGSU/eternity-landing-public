@@ -1,0 +1,19 @@
+include ./form
+include ../inputbox/inputbox
+include ../icon/icon
+
+mixin form--search()
+  -
+    const props = initComponent('form', attributes, ['input-placeholder']);
+  
+    attributes.id = attributes.id || 'form-search';
+
+    props['input-placeholder'] = props['input-placeholder'] || 'Найти...';
+
+  +form(method="POST").form--search&attributes(attributes)
+    .field
+      +inputbox(mod="search").form__inputbox
+        input(type="search" name="q" id=`${attributes.id}-q` placeholder=props['input-placeholder']).inputbox__input
+        +inputbox__btn-clear()
+        button(type="submit").inputbox__search-submit
+          +icon("search")

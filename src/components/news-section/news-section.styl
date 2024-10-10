@@ -1,0 +1,59 @@
+.news-section
+  display block
+  &__blocks
+    display flex
+    flex-direction column
+    gap 64px
+    +desktop()
+      gap 80px
+    &--small-gap
+      gap 40px
+      +desktop()
+        gap 56px
+
+
+  &__img
+    width 100%
+    max-height 760px
+    margin 0 auto 40px auto
+    overflow hidden
+    border-radius 30px
+    +desktop()
+      margin 0 auto 56px auto
+
+  &__block
+    display flex
+    flex-direction column
+    h2&-title
+      margin 0 0 24px 0
+      font-size rem(28px)
+      +desktop()
+        margin 0 0 40px 0
+        font-size rem(56px)
+    h3&-title
+      margin 0 0 20px 0
+      font-size rem(24px)
+      +desktop()
+        margin 0 0 24px 0
+        font-size rem(32px)
+    &-img
+      margin 12px 0 32px 0
+      overflow hidden
+      &-caption
+        margin rem(8px) 0 0 0
+        color var(--text-blind-color)
+        font-size rem(12px)
+        +desktop()
+          margin 16px 0 40px 0
+          font-size rem(14px)
+      img
+        max-height 230px
+        border-radius 20px
+        +desktop()
+          max-height 600px
+          border-radius 30px
+    p
+      &:last-child
+        margin-bottom 0
+    a
+      color var(--primary-color)

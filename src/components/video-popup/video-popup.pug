@@ -1,0 +1,7 @@
+mixin video-popup()
+  -
+    const props = initComponent('video-popup', attributes, ['url']);
+
+  dialog.video-popup&attributes(attributes)
+    button(type="button" aria-label="Закрыть").video-popup__btn-close
+    block

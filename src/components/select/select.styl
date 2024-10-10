@@ -1,0 +1,56 @@
+select[multiple]
+  height auto
+  background-image none
+
+select&:not([multiple])
+  min-height 50px
+  padding 10px 30px 10px 16px
+  color var(--text-color)
+  font-weight 400
+  font-size rem(16px)
+  font-family $font-family
+  line-height 1.5
+  background-color var(--color-white)
+  background-image url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'%3E%3Cpath fill='%23333333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/%3E%3C/svg%3E")
+  background-repeat no-repeat
+  background-position right .7em top 50%
+  background-size .65em auto
+  background-clip padding-box
+  border 1px solid #ced4da
+  border-radius 6px
+  transition all .2s ease
+  appearance none
+  appearance none
+  &:invalid
+    box-shadow none
+  &:hover
+    background-color #f2f8ff
+    border-color #e0efff
+  &:focus-visible
+    border-color #3388ff
+    outline none
+  &::placeholder
+    color var(--text-blind-color)
+    opacity 1
+  &:disabled
+    opacity .5
+    pointer-events none
+  &:-webkit-autofill
+    transition background-color 10000000s ease-out
+  &::-ms-expand
+    display none
+
+  .is-invalid &
+    color var(--error-color)
+    border-color var(--error-color)
+
+  option[hidden]
+    display none
+
+
+.select
+  select[data-custom-select]&
+    visually-hidden()
+
+  &--hidden
+    visually-hidden()

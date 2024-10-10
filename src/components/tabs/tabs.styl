@@ -1,0 +1,67 @@
+.tabs
+  position relative
+  padding 4px
+  background rgba(255, 255, 255, .1)
+  border-radius 30px
+  backdrop-filter blur(50px)
+  &__tabs
+    --gap rem(24px)
+    position relative
+    display inline-flex
+    max-width calc(100% + 24px)
+    margin-right -12px
+    margin-left -12px
+    padding 0 12px 0 12px
+    overflow-x auto
+    overflow-y hidden
+    // +above(80em)
+    //   --gap rem(48px)
+    //   width auto
+    //   margin 0
+    //   padding 0
+    //   custom-scrollbar-horizontal(8px, transparent, var(--primary-color))
+  &__items
+    display flex
+    gap 2px
+    margin 0
+    padding 0
+    overflow hidden
+    list-style none
+    &-slider
+      position absolute
+      bottom 0
+      z-index -1
+      height 100%
+      background-color var(--color-white)
+      border-radius 30px
+      transition all .5s ease
+
+  &__item
+    margin 0
+    padding 0
+
+  &__tab
+    padding rem(12px) rem(20px)
+    color var(--text-blind-color)
+    text-decoration none
+    background-color transparent
+    border none
+    border-radius 30px
+    transition all .3s ease
+    &.active
+      color var(--bg-dark-color)
+    &:hover
+      &:not(.active)
+        color var(--text-blind-color)
+        background rgba(255, 255, 255, .1)
+
+      @media (hover none)
+        background initial
+
+  &__panel
+    &:not(.active)
+      display none
+
+.tabs-panel
+  &:not(.active)
+    display none

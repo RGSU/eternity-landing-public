@@ -1,0 +1,12 @@
+.persons
+  container()
+  &__box
+    display grid
+    grid-template-columns 1fr
+    gap 40px
+    +above(60em)
+      grid-template-columns 1fr 1fr
+    +desktop()
+      grid-template-columns 1fr
+    +above(100em)
+      grid-template-columns 1fr 1fr

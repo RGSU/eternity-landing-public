@@ -1,0 +1,36 @@
+.link-item
+  display flex
+  flex-direction column
+  gap 8px
+  &__link
+    display flex
+    gap 10px
+    align-items center
+    font-weight 600
+    font-size rem(18px)
+    text-decoration none
+    +desktop()
+      gap 12px
+      font-size rem(24px)
+    .icon
+      size 24px
+  &__label
+    position relative
+    &::after
+      position absolute
+      bottom 0
+      left 0
+      width 0
+      height 1px
+      background-color var(--color-white)
+      transition all .3s ease
+      content ""
+    &:hover
+    &:focus-visible
+      &::after
+        width 100%
+  &__caption
+    color var(--text-blind-color)
+    font-size rem(12px)
+    +desktop()
+      font-size rem(14px)

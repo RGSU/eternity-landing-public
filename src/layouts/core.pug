@@ -1,0 +1,36 @@
+//- core layout
+
+include ../components/common/functions
+include ../components/common/data
+
+include ../components/head/head
+include ../components/scripts/scripts
+
+block data
+  - 
+    const html = {
+      classes: [],
+    };
+    const page = {
+      name: "page",
+      title: "Заголовок страницы",
+      classes: [],
+    };
+    const data = {};
+
+doctype html
+
+html(lang="ru" class=html.classes)
+
+  block head
+    +head()
+
+  block body
+    body
+      .page(class=page.classes)
+        block page
+
+        block popups
+
+        block scripts
+          +scripts()

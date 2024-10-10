@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "node_modules/",
+    "**/node_modules/",
+    "/**/node_modules/*",
+    "dist/",
+    "_project/",
+    "src/plugins/gsap-animate/gsap.min.js",
+    "src/plugins/gsap-animate/ScrollTrigger.min.js",
+    "src/plugins/gsap-animate/MotionPathPlugin.min.js",
+    "src/plugins/gsap-animate/Draggable.min.js",
+    "src/plugins/gsap-animate/gsapAnimations.js",
+    "src/components/face-canvas/face-canvas.js"
+  ],
+  "extends": "airbnb-base",
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": ["error", "ignorePackages"],
+    "linebreak-style": "off",
+    "eol-last": "off",
+    "no-param-reassign": ["error", { "props": false }]
+  }
+}

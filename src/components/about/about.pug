@@ -1,0 +1,27 @@
+include ../icon/icon
+
+mixin about()
+  -
+    const props = initComponent('about', attributes, ['items']);
+
+    const items = [
+      { title: "Миссия", text: "10&nbsp;лет наша команда работала над проектом &laquo;Вечность&raquo; и&nbsp;успешно его завершила. Теперь любой желающий может сохранить себя для возрождения в&nbsp;будущем. Мы&nbsp;создали и&nbsp;гарантируем возможность описать и&nbsp;сохранить себя до&nbsp;тех времён, когда такое возрождение станет возможным."},
+      { title: "Ценности", text: "Проект &laquo;Вечность&raquo; имеет серьезный потенциал для закрытия широкого пула личных потребностей: кто-то хочет оставить свой след, кто-то не&nbsp;готов останавливаться на&nbsp;достигнутом и&nbsp;ему нужно больше времени, кто-то хочет сохранить достигнутый уровень комфорта, а&nbsp;кто-то хочет стать частью будущего человечества или любых его форм."}
+    ]
+
+    props.items = props.items || items;
+
+  .about#about-section&attributes(attributes)
+    .content-container
+      .about__box
+        - if (Array.isArray(props.items))
+          each item in props.items
+            +about__item(mod="" title!=item.title text!=item.text)
+
+mixin about__item()
+  -
+    const props = initComponent('component', attributes, ['title', 'text']);
+
+  article.about__item&attributes(attributes)
+    h3.about__item-title!= props.title
+    p.about__item-text!= props.text

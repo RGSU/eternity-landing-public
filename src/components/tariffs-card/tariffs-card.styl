@@ -1,0 +1,77 @@
+.tariffs-card
+  display flex
+  flex-direction column
+  padding rem(20px)
+  background-color var(--card-color)
+  border-radius rem(30px)
+  +desktop()
+    padding rem(32px)
+
+  &__block
+    display flex
+    flex-direction column
+    gap rem(24px)
+    &:not(:last-child)
+      padding-bottom rem(20px)
+      border-bottom 1px solid rgba(255, 255, 255, .2)
+    &:not(:first-child)
+      padding-top rem(20px)
+    +desktop()
+      gap rem(32px)
+      &:not(:first-child)
+        padding-top rem(32px)
+      &:not(:last-child)
+        padding-bottom rem(32px)
+
+  &__title
+    margin 0
+
+  &__price
+    display flex
+    flex-direction column
+    gap rem(8px)
+    &-label
+      font-weight 600
+      font-size rem(18px)
+      +desktop()
+        font-size rem(24px)
+    &-caption
+      color var(--text-blind-color)
+      font-size rem(12px)
+      +desktop()
+        font-size rem(14px)
+
+  &__btns
+    display flex
+    flex-direction column
+    gap rem(12px)
+    .link-item__link
+      justify-content center
+      font-size rem(14px)
+
+  &__checks
+    display flex
+    flex-direction column
+    gap rem(16px)
+    margin 0
+    padding 0
+    list-style none
+    +desktop()
+      gap rem(20px)
+    li
+      position relative
+      margin 0
+      padding-left 34px
+      font-size rem(14px)
+      &::before
+        position absolute
+        top 0
+        left 0
+        size 22px
+        content url('../img/icons/check.svg')
+      +desktop()
+        padding-left 36px
+        font-size rem(16px)
+        &::before
+          size 24px
+

@@ -1,0 +1,54 @@
+//- Компонент для нативных или кастомных (с собственным оформлением и дополнительным функционалом) селектов
+  Можно использовать любые стандартные атрибуты тега select, плюс:
+  - placeholder: подсказка, когда ни один пункт не выбран 
+  - options: объект-массив с данными для тегов option
+  - selected: value выбранного (selected) пункта option; для мультиселекта это массив из всех выбранных значений
+  
+  Кастомный селект: 
+  - data-custom-select - инициализация кастомного плагина
+  - (пока не реализовано) data-custom-select-mod - перечень (через пробел) модификаторов для класса кастомного селекта
+  - data-custom-select-prefix - префикс для заголовка кнопки селекта. Можно использовать, например, для реализации селекторов сортировки данных: 
+    "Сортировать по: Популярности" (здесь "Сортировать по:" и есть такой префикс)
+  - data-custom-select-search - добавляет поисковое поле
+  - data-custom-select-search-placeholder - устанавливает плейсхолдер для поискового поля
+  
+  Пример:
+  - 
+    var optionsCities = [
+      {value: "moscow", text: "Москва"},
+      {value: "piter", text: "Санкт-Петербург"}
+    ] 
+  +select(name="cities" id="form-order-cities" placeholder="Выберите город" options=optionsCities selected="moscow" data-custom-select="true" mod="big light")
+
+mixin select()
+  -
+    const params = { ...attributes };
+    attributes.class = mod2Classes(attributes, 'select');
+
+    attributes["data-mod"] = attributes.mod;
+
+    delete attributes.placeholder;
+    delete attributes.options;
+    delete attributes.selected;
+    delete attributes.mod;
+
+  select().select&attributes(attributes)
+    - if (params.placeholder)
+      - if (params.selected)
+        option(value="" disabled hidden)!= params.placeholder
+      - else
+        option(value="" disabled selected hidden)!= params.placeholder
+
+    - if (Array.isArray(params.options))
+      each option, num in params.options
+        - const dataImg = option.code ? "assets/img/flags/" + option.code.toLowerCase() + ".svg" : false
+        - if (Array.isArray(params.selected))
+          - if (option.value && (params.selected.indexOf(option.value) > -1 || option.value == params.value))
+            option(value=option.value data-img=dataImg selected="")!= option.text
+          - else
+            option(value=option.value data-img=dataImg)!= option.text
+        - else
+          - if (option.value && (option.value == params.selected || option.value == params.value))
+            option(value=option.value data-img=dataImg selected="")!= option.text
+          - else
+            option(value=option.value data-img=dataImg)!= option.text

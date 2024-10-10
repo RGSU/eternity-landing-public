@@ -1,0 +1,110 @@
+//- Пример использования:
+//- +img(src="assets/img/last-step@mob.png" responsive=[{src: "assets/img/last-step@desktop.png", breakpoint: "1000px"}, {src: "assets/img/last-step@tablet.png", breakpoint: "480px"}] width="200" height="100" alt="" webp lazy retina).section__image
+
+mixin img()
+
+  - function getFileNameWithoutExtension(filename) {return filename.split('.').slice(0, -1).join('.');}
+  - function getFileExtension(filename) {return filename.substring(filename.lastIndexOf('.') + 1, filename.length) || filename;}
+
+  - attributes.classes           = []
+
+  - attributes.src              = attributes.src           || "image.jpg"
+  - attributes.alt              = attributes.alt           || ""
+  - attributes.webp             = attributes.webp          || false
+  - attributes.lazy             = attributes.lazy          || false
+  - attributes.retina           = attributes.retina        || false
+  - attributes.placeholder      = attributes.placeholder   || "assets/img/placeholder.png"
+  
+  - if (attributes.class)
+    - attributes.classes.push(attributes.class)
+
+  - if (attributes.lazy)
+    - attributes.classes.push("lazy")
+
+  - var file_ext = getFileExtension(attributes.src)
+  - var raster = ((file_ext == "jpg") || (file_ext == "jpeg") || (file_ext == "png"))
+
+  - var webp = attributes.webp && raster
+
+  - if (webp || attributes.responsive)
+    picture
+      - if (attributes.responsive)
+        each item, num in attributes.responsive
+          +_source(src=item.src breakpoint=item.breakpoint lazy=attributes.lazy webp=webp retina=attributes.retina retina_suffix="@2x" placeholder=attributes.placeholder)
+      
+      +_source(src=attributes.src lazy=attributes.lazy webp=webp retina=attributes.retina retina_suffix="@2x" placeholder=attributes.placeholder)
+
+      +_img(src=attributes.src lazy=attributes.lazy webp=webp retina=attributes.retina retina_suffix="@2x" placeholder=attributes.placeholder width=attributes.width height=attributes.height alt=attributes.alt class=attributes.classes)
+  - else
+    +_img(src=attributes.src lazy=attributes.lazy webp=webp retina=attributes.retina retina_suffix="@2x" placeholder=attributes.placeholder width=attributes.width height=attributes.height alt=attributes.alt class=attributes.classes)
+
+mixin _source()
+  - function getFileNameWithoutExtension(filename) {return filename.split('.').slice(0, -1).join('.');}
+  - function getFileExtension(filename) {return filename.substring(filename.lastIndexOf('.') + 1, filename.length) || filename;}
+
+  - var _file_name = getFileNameWithoutExtension(attributes.src)
+  - var _file_ext = getFileExtension(attributes.src)
+  - var raster = ((_file_ext == "jpg") || (_file_ext == "jpeg") || (_file_ext == "png"))
+  
+  - var _srcset = attributes.src
+  - var _data_srcset = false
+  
+  - var _type = "image/" + _file_ext
+
+  if (_file_ext == "svg")
+    - _type = "image/svg+xml"
+
+  if ((_file_ext == "jpg") || (_file_ext == "jpeg"))
+    - _type = "image/jpeg"
+
+  - var _media = false
+  if attributes.breakpoint
+    - _media = "(min-width: " + attributes.breakpoint + ")"
+
+  if attributes.lazy
+    - _srcset = attributes.placeholder
+    - _data_srcset = _file_name + "." + _file_ext
+  
+  if attributes.retina
+    - _srcset = _file_name + "." + _file_ext + " 1x, " + _file_name + attributes.retina_suffix + "." + _file_ext + " 2x"
+    
+    if attributes.lazy
+      - _data_srcset = _srcset
+      - _srcset = attributes.placeholder
+  
+  if (attributes.webp && raster)
+    - var _srcset_webp = _file_name + ".webp"
+    - var _data_srcset_webp = false
+    
+    if attributes.lazy
+      - _data_srcset_webp = _srcset_webp
+      - _srcset_webp = attributes.placeholder
+    
+    if attributes.retina
+      - _srcset_webp = _file_name + ".webp 1x, " + _file_name + attributes.retina_suffix + ".webp 2x"
+      if attributes.lazy
+        - _data_srcset_webp = _srcset_webp
+        - _srcset_webp = attributes.placeholder
+
+      source(srcset=_srcset_webp data-srcset=_data_srcset_webp media=_media type="image/webp")
+
+  source(srcset=_srcset data-srcset=_data_srcset media=_media type=_type)
+
+mixin _img()
+  - function getFileNameWithoutExtension(filename) {return filename.split('.').slice(0, -1).join('.');}
+  - function getFileExtension(filename) {return filename.substring(filename.lastIndexOf('.') + 1, filename.length) || filename;}
+
+  - var _src = attributes.src
+  - var _data_src = false
+
+  - var _file_name = getFileNameWithoutExtension(attributes.src)
+  - var _file_ext = getFileExtension(attributes.src)
+  
+  if attributes.lazy
+    - _src = attributes.placeholder
+    - _data_src = _file_name + "." + _file_ext
+  
+  if attributes.retina
+    - _data_src = _file_name + "." + _file_ext + " 1x, " + _file_name + attributes.retina_suffix + "." + _file_ext + " 2x"
+
+  img(src=_src data-src=_data_src width=attributes.width height=attributes.height alt=attributes.alt class=attributes.class)

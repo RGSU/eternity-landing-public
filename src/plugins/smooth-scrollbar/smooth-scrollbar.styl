@@ -1,0 +1,32 @@
+// .scrollbar-track
+//   display none !important
+//   background var(--bg-dark-color) !important /* Цвет фона трека */
+//   +desktop()
+//     display block !important
+
+// .scrollbar-thumb
+//   width 5px !important
+//   background var(--primary-dark-color) !important /* Цвет ползунка */
+//   border-radius 4px !important /* Закругленные углы ползунка */
+
+// .scrollbar-track-y
+//   width 5px !important /* Ширина вертикального трека */
+
+// .scrollbar-track-x
+//   height 5px !important /* Высота горизонтального трека */
+
+html.lenis
+html.lenis body
+  height auto
+
+.lenis.lenis-smooth
+  scroll-behavior auto !important
+
+.lenis.lenis-smooth [data-lenis-prevent]
+  overscroll-behavior contain
+
+.lenis.lenis-stopped
+  overflow hidden
+
+.lenis.lenis-smooth iframe
+  pointer-events none

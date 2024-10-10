@@ -1,0 +1,59 @@
+.textarea
+  display block
+  width 100%
+  min-height rem(200px)
+  padding 10px 16px
+  color var(--text-color)
+  font-weight 400
+  font-size rem(16px)
+  font-family $font-family
+  line-height 1.5
+  background-color #565961
+  background-clip padding-box
+  border 1px solid #565961
+  border-radius 12px
+  transition all .2s ease
+  appearance none
+  resize vertical
+  custom-scrollbar(4px, transparent, var(--color-primary))
+  caret-color #000
+  +desktop()
+    min-height rem(208px)
+    font-size rem(18px)
+  &:invalid
+    box-shadow none
+  &:focus-visible
+    border-color var(--primary-color)
+    outline none
+  &::placeholder
+    color var(--text-blind-color)
+    font-size rem(16px)
+    opacity 1
+    +desktop()
+      font-size rem(18px)
+  &:disabled
+    opacity .5
+    pointer-events none
+  &:-webkit-autofill
+    transition background-color 10000000s ease-out
+
+  .is-invalid &
+    border-color #ff7d74
+
+  &--white
+    padding 10px 30px
+    border-color var(--color-white)
+    &:hover
+      background-color #f2f8ff
+      border-color #e0efff
+    &:focus-visible
+      background-color var(--color-white)
+      border-color #3388ff
+    &:disabled
+    &.disabled
+      border-color #c0d6f6
+    &::placeholder
+      color #425978
+
+  &--high
+    min-height rem(320px)

@@ -1,0 +1,39 @@
+.tariffs
+  position relative
+  &::before
+    position absolute
+    bottom -200px
+    left -350px
+    z-index -1
+    size 742px
+    background-color rgba(167, 19, 115, .4)
+    border-radius 100%
+    filter blur(350px)
+    content ''
+  &__box
+    display flex
+    flex-direction column
+    gap rem(32px)
+    +desktop()
+      gap rem(64px)
+
+  &__more-btn
+    margin 0 auto
+
+  &__inner
+    display flex
+    flex-direction column
+    gap rem(32px)
+
+  &__cards
+    display grid
+    grid-template-columns 1fr
+    gap rem(20px)
+    +above(48em)
+      grid-template-columns repeat(2, 1fr)
+    +desktop()
+      grid-template-columns repeat(3, 1fr)
+    +above(80em)
+      grid-template-columns repeat(4, 1fr)
+
+

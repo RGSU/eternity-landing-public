@@ -1,0 +1,9 @@
+mixin form()
+  -
+    const props = initComponent('form', attributes, []);
+  
+    attributes.action = attributes.action || "#";
+    attributes.method = attributes.method || "POST";
+
+  form().form&attributes(attributes)
+    block

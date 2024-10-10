@@ -1,0 +1,62 @@
+extends ../layouts/core
+
+block append data
+  -
+    const project = {
+      title: "Промо лэндинг 'Вечность'",
+      dir: "https://layout.rgsu.pro/projects/eternity-layout/",
+      validate: true
+    }
+
+    page.name = "index";
+    page.title = project.title;
+
+    function getCurrentTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}`;
+    }
+
+block page
+  main(style="background-color: #fff;").page__main
+    .content-wrapper
+      .content-container
+        article.demo
+          header.demo__header(style="color: #000")
+            h1.demo__title Фронтенд проекта "#{project.title}" (ПК)
+            p(style="font-size: .8em; margin: 0 0 .5em;") Время последней сборки: #{getCurrentTime()}
+          .demo__row
+            .demo__col
+              +demo__item(file="home.html" title="Главная страница" ready="true" style="color: #000")
+              +demo__item(file="media.html" title="Медиа страница" ready="true" style="color: #000")
+              +demo__item(file="faq.html" title="Часто задаваемые вопросы" ready="true" style="color: #000")
+              +demo__item(file="news.html" title="Конкретная новость" ready="true" style="color: #000")
+              +demo__item(file="tariffs.html" title="Тарифы" ready="true" style="color: #000")
+              h2.demo__title-2(style="color: #000") Разное
+              .demo__block
+                +demo__item(file="text.html" title="Текстовая страница" ready="true" style="color: #000")
+                +demo__item(file="ui-kit.html" title="UI-Kit" ready="true" style="color: #000")
+
+mixin demo__item()
+  -
+    const params = { ...attributes };
+
+    delete attributes.file;
+    delete attributes.title;
+    delete attributes.ready;
+    delete attributes.validate;
+
+    params.ready = params.ready || "true";
+    params.validate = params.validate !== "false";
+
+  p.demo__item(class=(params.ready != "true") && "demo__item--in-progress")&attributes(attributes)
+    if (project.validate && params.validate)
+      | [
+      a(href="https://validator.w3.org/nu/?doc=" + project.dir + params.file target="_blank") v
+      | ] 
+      | 
+    a(href=params.file target="_blank")!= params.title

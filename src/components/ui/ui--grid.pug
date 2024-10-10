@@ -1,0 +1,131 @@
+include ./ui
+
+mixin ui--grid()
+  +ui__section(title="Модульная сетка")
+    p Подключена модульная сетка из CSS-фреймворка Bootstrap 4. Документация: <a href="https://getbootstrap.com/docs/4.0/layout/grid/" target="_blank">https://getbootstrap.com/docs/4.0/layout/grid/</a>
+
+    +ui__subsection(title="Настройки сетки для данного проекта")
+      p Gutter width: 1.25em/20px
+      p Breakpoints: 
+      table.demo__table-breakpoints
+        tr
+          th xs
+          td &gt; 0 (&lt;22.5em/360px)
+          td Extra small screen / phone
+        tr
+          th sm
+          td &gt;= 22.5em/360px
+          td Small screen / phone
+        tr
+          th sd
+          td &gt;= 30em/480px
+          td Phone Landscape
+        tr
+          th md
+          td &gt;= 48em/768px
+          td Medium screen / tablet
+        tr
+          th lg
+          td &gt;= 64em/1024px
+          td Large screen / desktop
+        tr
+          th xl
+          td &gt;= 80em/1280px
+          td Extra large screen / wide desktop
+        tr
+          th xxl
+          td &gt;= 90em/1440px
+          td Extra extra large screen / macbook desktop
+
+    +ui__subsection(title="Демо сетки").ui__grid-demo
+      .row
+        .col
+          span 1 of 2
+        .col
+          span 2 of 2
+
+      .row
+        .col
+          span 1 of 3
+        .col
+          span 2 of 3
+        .col
+          span 3 of 3
+      .row
+        .col
+          span 1 of 4
+        .col
+          span 2 of 4
+        .col
+          span 3 of 4
+        .col
+          span 4 of 4
+      
+      .row
+        .col-sm-8
+          span col-sm-8
+        .col-sm-4
+          span col-sm-4
+      .row
+        .col-sm
+          span col-sm
+        .col-sm
+          span col-sm
+        .col-sm
+          span col-sm
+
+      .row
+        .col-xl-1.col-md-6
+          span .col-xl-1 .col-md-6
+        .col-xl-11.col-md-6
+          span .col-xl-11 .col-md-6
+      .row
+        .col-xl-2.col-md-6
+          span .col-xl-2 .col-md-6
+        .col-xl-10.col-md-6
+          span .col-xl-10 .col-md-6
+      .row
+        .col-xl-3.col-md-6
+          span .col-xl-3 .col-md-6
+        .col-xl-9.col-md-6
+          span .col-xl-9 .col-md-6
+      .row
+        .col-xl-4.col-md-6
+          span .col-xl-4 .col-md-6
+        .col-xl-8.col-md-6
+          span .col-xl-8 .col-md-6
+      .row
+        .col-xl-5.col-md-6
+          span .col-xl-5 .col-md-6
+        .col-xl-7.col-md-6
+          span .col-xl-7 .col-md-6
+      .row
+        .col-xl-6.col-md-6
+          span .col-xl-6 .col-md-6
+        .col-xl-6.col-md-6
+          span .col-xl-6 .col-md-6
+      .row
+        .col-xl-7.col-md-6
+          span .col-xl-7 .col-md-6
+        .col-xl-5.col-md-6
+          span .col-xl-5 .col-md-6
+      .row
+        .col-xl-8.col-md-6
+          span .col-xl-8 .col-md-6
+        .col-xl-4.col-md-6
+          span .col-xl-4 .col-md-6
+      .row
+        .col-xl-9.col-md-6
+          span .col-xl-9 .col-md-6
+        .col-xl-3.col-md-6
+          span .col-xl-3 .col-md-6
+      .row
+        .col-xl-10.col-md-6
+          span .col-xl-10 .col-md-6
+        .col-xl-2.col-md-6
+          span .col-xl-2 .col-md-6
+      .row
+        .col-xl-11.col-md-6
+          span .col-xl-11 .col-md-6
+        .col-xl-1.col-md-6
+          span .col-xl-1 .col-md-6

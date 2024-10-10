@@ -1,0 +1,8 @@
+include ../validator/validator
+
+mixin textarea()
+  -
+    const props = initComponent('textarea', attributes, []);
+    setValidatorMsg(attributes);
+
+  textarea().textarea&attributes(attributes)

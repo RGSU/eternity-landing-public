@@ -1,0 +1,27 @@
+include ./ui
+include ../button/button
+
+mixin ui--buttons()
+  +ui__section(title="Кнопки")
+    +ui__subsection(title="Primary")
+      +ui__sequence().ui__sequence--vcenter
+        +button(label="Кнопка" mod="gradient").js-btn-gradient
+        +button(label="Кнопка" mod="small gradient").js-btn-gradient
+        +button(label="Кнопка" mod="gradient" disabled)
+        +button(label="Кнопка" icon="arrow-right" mod="icon gradient").js-btn-gradient
+        +button(label="Кнопка" icon="arrow-right" mod="icon-right gradient").js-btn-gradient
+        +button(label="Кнопка" icon="arrow-right" mod="gradient icon-left-right" doubleIcon).js-btn-gradient
+        +button(label="Кнопка" icon="arrow-right" mod="gradient icon-left-right" doubleIcon disabled)
+    +ui__subsection(title="Secondary")
+      +ui__sequence().ui__sequence--vcenter
+        +button(label="Кнопка" mod="secondary" ripple).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary icon" ripple).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary icon-right" ripple).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary icon-left-right" doubleIcon ripple).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary" doubleIcon disabled)
+    +ui__subsection(title="Outline")
+      +ui__sequence().ui__sequence--vcenter
+        +button(label="Кнопка" icon="arrow-right" mod="secondary-outline icon" ripple outline).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary-outline icon-right" ripple outline).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary-outline icon-left-right" doubleIcon ripple outline).js-btn-ripple
+        +button(label="Кнопка" icon="arrow-right" mod="secondary-outline icon-left-right" doubleIcon disabled)

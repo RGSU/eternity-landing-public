@@ -1,0 +1,12 @@
+mixin person-card()
+  -
+    const props = initComponent('person-card', attributes, ['img', 'name', 'text', 'exp']);
+
+  article.person-card&attributes(attributes)
+    .person-card__img 
+      img(src=props.img alt=props.name)
+      span.person-card__img-caption-wrapper
+        span.person-card__img-caption!= `${props.exp} лет опыта`
+    .person-card__inner
+      h3.person-card__name!= props.name
+      .person-card__content!= props.text

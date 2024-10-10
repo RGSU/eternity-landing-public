@@ -1,0 +1,105 @@
+.collapse-item
+  display flex
+  flex-direction column
+  padding rem(12px)
+  background-color var(--color-white)
+  border-radius rem(12px)
+  +desktop()
+    padding rem(20px) rem(24px)
+
+  &__top
+    display flex
+    flex-flow row nowrap
+    gap rem(20px)
+    align-items center
+    justify-content space-between
+
+  &__header
+    display flex
+    flex-direction column
+    gap rem(12px)
+    align-items flex-start
+
+  &__title
+    margin 0
+    color var(--color-grey-100)
+    font-weight 600
+    font-size rem(24px)
+    line-height 1.25
+    +desktop()
+      margin 0
+      font-size rem(24px)
+
+  &__toggle
+    position relative
+    flex 0 0 auto
+    size 48px
+    padding 0
+    background-color var(--color-grey-10)
+    border none
+    border-radius 50%
+    transition all .3s ease
+    &[aria-expanded="true"]
+      background-color var(--color-grey-40)
+      transform rotate(45deg)
+    &::before
+      position absolute
+      top 50%
+      left 50%
+      display block
+      width 19px
+      height 1px
+      margin-top -1px
+      margin-left -10px
+      background-color var(--text-color)
+      transition background-color .3s ease, transform .2s
+      content ""
+    &::after
+      position absolute
+      top 50%
+      left 50%
+      display block
+      width 1px
+      height 19px
+      margin-top -10px
+      margin-left -1px
+      background-color var(--text-color)
+      transition all .3s ease
+      content ""
+    &:hover
+    &:focus-visible
+      background-color var(--color-blue-40)
+      &::before
+      &::after
+        background-color var(--color-blue-80)
+
+  &__content
+    margin-top rem(40px)
+    +desktop()
+      margin-top rem(48px)
+
+  p
+    margin 0 0 1em
+    color var(--color-grey-80)
+    font-weight 500
+    font-size rem(18px)
+    line-height 1.4
+    &:last-child
+      margin-bottom 0
+
+  ul
+    margin 0 0 1em
+    padding 0
+    color var(--color-grey-80)
+    font-weight 500
+    font-size rem(18px)
+    line-height 1.4
+    list-style none
+    &:last-child
+      margin-bottom 0
+    li
+      margin 0 0 1em
+      padding 0
+      &:last-child
+        margin-bottom 0
+

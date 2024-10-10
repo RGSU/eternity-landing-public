@@ -1,0 +1,16 @@
+include ./form
+include ../inputbox/inputbox
+include ../icon/icon
+include ../button/button
+
+mixin form--search-wide()
+  -
+    const props = initComponent('form', attributes, []);
+  
+    attributes.id = attributes.id || 'form-search-wide';
+
+  +form(method="POST").form--search-wide&attributes(attributes)
+    .form__field.field
+      +inputbox(label="Найти" for=`${attributes.id}-q` icon="search" btn-clear="true").inputbox--search-wide.form__inputbox
+        input(type="search" name="q" id=`${attributes.id}-q` placeholder=" ").inputbox__input
+    +button(type="submit" icon="search" label="Найти").inputbox__submit

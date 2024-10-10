@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+include ../components/faq-page/faq-page
+
+block append data
+  -
+    page.name = 'faq';
+    page.title = 'Часто задаваемые вопросы';
+
+block main
+  +faq-page()

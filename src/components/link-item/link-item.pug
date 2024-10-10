@@ -1,0 +1,19 @@
+include ../icon/icon
+
+mixin link-item()
+  -
+    const props = initComponent('link-item', attributes, ['href', 'type', 'label', 'caption', 'icon']);
+
+    if (props.type)
+      props.type = String(props.type) + ':';
+    else 
+      props.type = '';
+    props.href = props.href || '#';
+
+  .link-item&attributes(attributes)
+    a(href=`${props.type}${props.href}`).link-item__link
+      - if (props.icon)
+        +icon(props.icon)
+      span.link-item__label!= props.label
+    - if (props.caption)
+      span.link-item__caption!= props.caption

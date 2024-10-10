@@ -1,0 +1,395 @@
+.button
+  position relative
+  display flex
+  flex-shrink 0
+  min-height rem(48px)
+  padding 0
+  overflow hidden
+  color var(--color-white)
+  font-weight 600
+  font-size rem(16px)
+  font-family $font-family
+  line-height 1.4
+  text-align center
+  text-decoration none
+  background-color var(--primary-color)
+  border none
+  border-radius rem(30px)
+  cursor pointer
+  transition all .3s ease
+  +above(64em)
+    gap rem(10px)
+    font-size rem(18px)
+    border-radius rem(37px)
+  &:hover
+  &:focus-visible
+    text-decoration none
+    outline-offset 2px
+    & ^[0]__fill-ripple
+      transform translateY(-50%) scale(1)
+  &:active
+    & ^[0]__fill-ripple
+      background-color var(--primary-light-color)
+  &:disabled
+  &.disabled
+    color #c0c0c1
+    background-color #414245
+    pointer-events none
+    & ^[0]__inner
+      background-color #626365
+
+  &__inner
+    position relative
+    display flex
+    flex 1 0 auto
+    flex-flow row nowrap
+    gap rem(8px)
+    align-items center
+    justify-content center
+    padding rem(12px) rem(20px)
+    background-color var(--primary-color)
+    border-radius rem(30px)
+    +above(64em)
+      padding rem(16px) rem(24px)
+      border-radius rem(37px)
+
+  &__icon
+    position relative
+    flex 0 0 auto
+    size rem(20px)
+    ^[0]--icon-right &
+      order 10
+    +above(64em)
+      size rem(24px)
+
+  &__label
+    position relative
+
+  &__fill
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    overflow hidden
+    border-radius rem(30px)
+    transform translateZ(0)
+    pointer-events none
+    &-ripple
+      position absolute
+      top 50%
+      left -5%
+      width 110%
+      padding-top 100%
+      background-color var(--primary-dark-color)
+      border-radius 50%
+      transform translateY(-50%) scale(0) translateZ(0)
+      transition transform .6s, background .7s
+
+  &__stroke
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+
+  // Модификаторы
+  &--rounded
+    border-radius 100px
+
+  &--square
+    justify-content center
+    min-width rem(56px)
+    & ^[0]__inner
+      padding rem(10px)
+
+  &--small
+    min-height rem(38px)
+    font-size rem(14px)
+    line-height 1.4
+    & ^[0]__inner
+      padding rem(8px)
+    +above(64em)
+      min-height rem(46px)
+      font-size rem(16px)
+      line-height 1.5
+      & ^[0]__inner
+        padding rem(12px)
+
+  &--small&--square
+    min-width rem(46px)
+    & ^[0]__inner
+      padding rem(8px)
+
+  &--large
+    min-height rem(60px)
+    font-weight 600
+    font-size rem(18px)
+    & ^[0]__inner
+      padding rem(16px) rem(40px)
+
+  &--large&--square
+    min-width rem(60px)
+    & ^[0]__inner
+      padding rem(15px)
+
+  &--gradient
+    padding 5px
+    background-color rgba(208, 62, 157, .5)
+    backdrop-filter blur(50px)
+    +above(64em)
+      padding 7px
+    &::before
+      position absolute
+      top var(--y)
+      left var(--x)
+      width 0
+      height 0
+      background radial-gradient(circle closest-side, #8d5e7e, transparent)
+      transform translate(-50%, -50%)
+      transition width .2s ease, height .2s ease
+      content ''
+    &:hover
+    &:focus-visible
+      &::before
+        width calc(100% + 50px)
+        height var(--before-height)
+
+  &--secondary
+    min-height rem(38px)
+    font-size rem(14px)
+    line-height 1.4
+    border none
+    & ^[0]__inner
+      padding rem(8px)
+    & ^[0]__stroke
+      display none
+    +above(64em)
+      min-height rem(48px)
+      font-size rem(16px)
+      line-height 1.5
+      & ^[0]__inner
+        padding rem(12px)
+
+  &--secondary-outline
+    min-height rem(38px)
+    font-size rem(14px)
+    line-height 1.4
+    background-color transparent
+    border none
+    & ^[0]__inner
+      padding rem(8px) rem(12px)
+      background-color transparent
+    & ^[0]__stroke
+      border 1px solid rgba(255, 255, 255, .2)
+      border-radius rem(30px)
+    +above(64em)
+      min-height rem(48px)
+      font-size rem(16px)
+      line-height 1.5
+      & ^[0]__inner
+        padding rem(12px) rem(20px)
+    &:disabled
+    &.disabled
+      color var(--text-blind-color)
+      background-color transparent
+      border 1px solid rgba(255, 255, 255, .2)
+      pointer-events none
+      & ^[0]__inner
+        background-color transparent
+
+  &--secondary&--icon
+  &--secondary-outline&--icon
+    & ^[0]__inner
+      padding rem(8px) rem(12px) rem(8px) rem(8px)
+    +above(64em)
+      & ^[0]__inner
+        padding rem(12px) rem(16px) rem(12px) rem(12px)
+
+  &--secondary&--icon-right
+  &--secondary-outline&--icon-right
+    & ^[0]__inner
+      padding rem(8px) rem(8px) rem(8px) rem(12px)
+    +above(64em)
+      & ^[0]__inner
+        padding rem(12px) rem(12px) rem(12px) rem(16px)
+
+  &--secondary&--icon-left-right
+  &--secondary-outline&--icon-left-right
+    & ^[0]__inner
+      padding rem(8px)
+    +above(64em)
+      & ^[0]__inner
+        padding rem(12px)
+
+
+  // &--white
+  //   color var(--color-blue-60)
+  //   background-color var(--color-white)
+  //   border-color var(--color-white)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-blue-60)
+  //     background-color var(--color-blue-20)
+  //     border-color var(--color-blue-20)
+  //   &:active
+  //     color var(--color-blue-60)
+  //     background-color var(--color-blue-40)
+  //     border-color var(--color-blue-40)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-blue-20)
+  //     background-color var(--color-grey-10)
+  //     border-color var(--color-grey-10)
+
+  // &--secondary
+  //   background-color transparent
+  //   border-color var(--color-blue-20)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-white)
+  //     background-color var(--color-blue-80)
+  //     border-color var(--color-blue-80)
+  //   &:active
+  //     color var(--color-white)
+  //     background-color var(--color-blue-100)
+  //     border-color var(--color-blue-100)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-grey-60)
+  //     background-color var(--color-grey-20)
+  //     border-color var(--color-grey-40)
+
+  // &--grey
+  //   color var(--color-blue-60)
+  //   background-color var(--color-grey-10)
+  //   border-color var(--color-grey-10)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-blue-80)
+  //     background-color var(--color-blue-20)
+  //     border-color var(--color-blue-20)
+  //   &:active
+  //     color var(--color-blue-80)
+  //     background-color var(--color-blue-20)
+  //     border-color var(--color-blue-20)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-grey-60)
+  //     background-color transparent
+  //     border-color var(--color-grey-10)
+
+
+  // &--outline
+  //   color var(--color-blue-60)
+  //   background-color transparent
+  //   border-color var(--color-blue-60)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-blue-100)
+  //     background-color var(--color-blue-40)
+  //     border-color var(--color-blue-40)
+  //   &:active
+  //     color var(--color-blue-100)
+  //     background-color var(--color-blue-70)
+  //     border-color var(--color-blue-70)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-blue-30)
+  //     background-color transparent
+  //     border-color var(--color-blue-30)
+
+  // &--outline-white
+  //   color var(--color-white)
+  //   background-color transparent
+  //   border-color var(--color-white)
+  //   &:hover
+  //   &:focus-visible
+  //   &:active
+  //     color var(--color-blue-60)
+  //     background-color var(--color-blue-20)
+  //     border-color var(--color-blue-20)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-blue-30)
+  //     background-color transparent
+  //     border-color var(--color-blue-50)
+
+  // &--outline-light-blue
+  //   color var(--color-blue-40)
+  //   background-color var(--color-blue-5)
+  //   border-color var(--color-blue-10)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-blue-40)
+  //     background-color var(--color-blue-10)
+  //     border-color var(--color-blue-10)
+  //   &:active
+  //     color var(--color-blue-40)
+  //     background-color var(--color-blue-10)
+  //     border-color var(--color-blue-20)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-blue-30)
+  //     background-color transparent
+  //     border-color var(--color-blue-50)
+
+  // &--success
+  //   color var(--color-white)
+  //   background-color var(--color-green-50)
+  //   border-color var(--color-green-50)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-white)
+  //     background-color var(--color-green-60)
+  //     border-color var(--color-green-60)
+  //   &:active
+  //     color var(--color-white)
+  //     background-color var(--color-green-20)
+  //     border-color var(--color-green-20)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-green-50)
+  //     background-color var(--color-green-20)
+  //     border-color var(--color-green-20)
+
+  // &--error
+  //   color var(--color-white)
+  //   background-color var(--color-red-50)
+  //   border-color var(--color-red-50)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-white)
+  //     background-color var(--color-red-60)
+  //     border-color var(--color-red-60)
+  //   &:active
+  //     color var(--color-white)
+  //     background-color var(--color-red-70)
+  //     border-color var(--color-red-70)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-red-400)
+  //     background-color var(--color-red-30)
+  //     border-color var(--color-red-30)
+
+  // &--warning
+  //   color var(--color-white)
+  //   background-color var(--color-yellow-50)
+  //   border-color var(--color-yellow-50)
+  //   &:hover
+  //   &:focus-visible
+  //     color var(--color-white)
+  //     background-color var(--color-yellow-50)
+  //     border-color var(--color-yellow-50)
+  //   &:active
+  //     color var(--color-white)
+  //     background-color var(--color-yellow-60)
+  //     border-color var(--color-yellow-60)
+  //   &:disabled
+  //   &.disabled
+  //     color var(--color-yellow-400)
+  //     background-color var(--color-yellow-20)
+  //     border-color var(--color-yellow-20)
+
+
+

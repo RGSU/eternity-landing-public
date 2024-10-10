@@ -1,0 +1,42 @@
+.section-heading
+  display flex
+  flex-direction column
+  gap 20px
+  align-items center
+  text-align center
+  +desktop()
+    gap 40px
+  &__wrapper
+    display flex
+    flex-direction column
+    gap 12px
+    align-items center
+    +desktop()
+      gap 24px
+  &__date
+    padding rem(4px) rem(10px)
+    font-size rem(12px)
+    background-color rgba(255, 255, 255, .1)
+    border-radius 30px
+    +desktop()
+      font-size rem(14px)
+  h1&__title
+    margin 0
+    font-size rem(44px)
+    +desktop()
+      font-size rem(88px)
+  &__title
+    margin 0
+    font-size rem(40px)
+    +desktop()
+      font-size rem(80px)
+  &__text
+    max-width 670px
+    margin 0
+
+  &--news
+    & ^[0]__title
+      font-size rem(28px)
+      +desktop()
+        font-size rem(64px)
+

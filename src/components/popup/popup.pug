@@ -1,0 +1,14 @@
+include ../button/button
+
+mixin popup()
+  -
+    const props = initComponent('popup', attributes, ['btn-close']);
+  
+    const showBtnClose = props["btn-close"] !== 'false';
+
+  dialog.popup&attributes(attributes)
+    .popup__top
+      - if (showBtnClose)
+        button(type="button" aria-label="Закрыть" data-popup-close="").popup__btn-close
+    .popup__body(data-lenis-prevent)
+      block

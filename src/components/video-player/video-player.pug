@@ -1,0 +1,65 @@
+include ../icon/icon
+
+mixin video-player()
+  -
+    const props = initComponent('video-player', attributes, ['video', 'poster', 'likes', 'views', 'provider', 'embed-id']);
+
+    if (props.video) attributes.class += " video-player--overlay"
+    if (props.provider) attributes.class += ` video-player--${props.provider}`
+
+  .video-player&attributes(attributes)
+    - if (props.video)
+      .video-player__video-container
+        video(preload="metadata" controls poster=props.poster).lazy
+          source(src=props.video type="video/mp4")
+          | Your browser does not support the video tag.
+    - if (props.provider)
+      .video-player__video-container
+        iframe(width="720" height="405" src=`https://rutube.ru/play/embed/${props['embed-id']}` frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen)
+
+    //- - if (props.provider)
+    //-   .video-player__video(data-video-provider=props.provider data-video-embed-id=props['embed-id'])
+    block
+    - if (props.video)
+      .video-player__duration
+      .video-player__toolbar
+        button(type="button" aria-label="Play").video-player__btn-play
+          +icon("play")
+          +icon("pause")
+        button(type="button").video-player__likes
+          +icon("like")
+          span.video-player__likes-value!= props.likes
+        .video-player__views
+          +icon("view")
+          span.video-player__views-value!= props.views
+
+mixin video-player--review()
+  -
+    const props = initComponent('video-player', attributes, ['video', 'poster', 'name', 'stars', 'provider', 'embed-id']);
+
+    if (props.video) attributes.class += " video-player--overlay"
+    if (props.provider) attributes.class += ` video-player--${props.provider}`
+
+  .video-player.video-player--review&attributes(attributes)
+    - if (props.video)
+      .video-player__video-container
+        video(preload="metadata" controls poster=props.poster).lazy
+          source(src=props.video type="video/mp4")
+          | Your browser does not support the video tag.
+    - if (props.provider)
+      .video-player__video-container
+        iframe(width="720" height="405" src=`https://rutube.ru/play/embed/${props['embed-id']}` frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen)
+
+    block
+    - if (props.video)
+      .video-player__top
+        button(type="button" aria-label="Play").video-player__btn-play
+          +icon("play")
+          +icon("pause")
+      .video-player__toolbar
+        h3.video-player__name!= props.name
+        .video-player__stars
+          span.video-player__views-value!= `${props.stars}/5`
+          +icon("star-filled")
+
+//- <iframe width="720" height="405" src="https://rutube.ru/play/embed/4c67513f40be24c5addef355f043928b" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>

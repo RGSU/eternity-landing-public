@@ -1,0 +1,14 @@
+mixin fixed-nav()
+  -
+    const props = initComponent('fixed-nav', attributes, []);
+
+  .fixed-nav&attributes(attributes)
+    .fixed-nav__container
+      a(href="#section-about").fixed-nav__link#fixed-nav-link-about О проекте
+      a(href="#section-work").fixed-nav__link.active#fixed-nav-link-work Как это работает 
+      a(href="#section-products").fixed-nav__link#fixed-nav-link-products Продукты
+      a(href="#section-ambassadors").fixed-nav__link#fixed-nav-link-ambassadors Амбассадоры
+      a(href="#section-tariffs").fixed-nav__link#fixed-nav-link-tariffs Тарифы
+      a(href="#section-faq").fixed-nav__link#fixed-nav-link-faq Вопросы
+      a(href="#section-media").fixed-nav__link#fixed-nav-link-media Медиа
+      .fixed-nav__slider

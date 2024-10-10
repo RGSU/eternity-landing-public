@@ -1,0 +1,20 @@
+include ./popup
+include ../button/button
+
+mixin popup--example()
+  +popup(id="popup-example")&attributes(attributes)
+    h2.popup__title Пример попапа
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    .center
+      +button(label="Закрыть" data-popup-close)
+
+mixin popup--example-2()
+  +popup(id="popup-example-2")&attributes(attributes)
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi saepe illum asperiores neque vitae dolore provident ad consectetur voluptatibus cumque ullam, voluptates, deserunt perferendis! Consequatur inventore dignissimos earum porro officia!

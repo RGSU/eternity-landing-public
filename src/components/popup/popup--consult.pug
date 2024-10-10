@@ -1,0 +1,9 @@
+include ./popup
+include ../form/form--application
+
+mixin popup--consult()
+  +popup(id="popup-consult" mod="small")&attributes(attributes)
+    h2.popup__title Заявка на&nbsp;консультацию
+    .popup__subtitle
+      p Перезвоним и&nbsp;ответим на&nbsp;ваши вопросы по&nbsp;избранным направлениям.
+    +form--application()

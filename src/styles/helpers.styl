@@ -1,0 +1,67 @@
+.container
+.content-container
+  container()
+  &--medium
+    container--medium()
+
+
+.content-wrapper
+  padding-top 30px
+  padding-bottom 30px
+  +desktop()
+    padding-top 45px
+    padding-bottom 60px
+
+.hidden
+  display none !important
+
+.visually-hidden
+  visually-hidden()
+
+.hide-mobile
+  +below(80em)
+    display none !important
+
+.hide-desktop
+  +desktop()
+    display none !important
+
+// Float
+
+.clearfix
+  cf()
+
+.float-left
+  float left !important
+
+.float-right
+  float right !important
+
+.float-none
+  float none !important
+
+
+// Misc
+
+.scroll-lock-ios
+  position fixed
+  overflow hidden
+  touch-action none
+
+.scroll-lock
+  overflow hidden
+  touch-action none
+
+// Colors
+
+.error-color
+  color var(--error-color) !important
+
+.primary-color
+  color var(--primary-color)!important
+
+.text-color
+  color var(--text-color) !important
+
+.text-blind-color
+  color var(--text-blind-color) !important

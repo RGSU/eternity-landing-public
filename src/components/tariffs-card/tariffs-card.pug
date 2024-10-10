@@ -1,0 +1,24 @@
+include ../button/button
+include ../link-item/link-item
+
+mixin tariffs-card()
+  -
+    const props = initComponent('tariffs-card', attributes, ['title', 'price', 'caption', 'link1', 'link2', 'checks']);
+
+    props.link1 = props.link1 || '#';
+    props.link2 = props.link2 || '#';
+
+  article.tariffs-card&attributes(attributes)
+    .tariffs-card__block
+      h4.tariffs-card__title!= props.title
+      .tariffs-card__price  
+        span.tariffs-card__price-label!= `${props.price} ₽`
+        span.tariffs-card__price-caption!= props.caption
+      .tariffs-card__btns 
+        +button(tag="a" href=props.link1 label="Выбрать план" mod="gradient").js-btn-gradient
+        +link-item(href="#" label!="Подробнее").tariffs-card__link
+    .tariffs-card__block
+      - if (Array.isArray(props.checks))
+        ul.tariffs-card__checks
+          each item in props.checks
+            li!= item

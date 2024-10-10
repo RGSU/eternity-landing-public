@@ -1,0 +1,11 @@
+include ../media/media
+include ../breadcrumbs/breadcrumbs
+
+mixin media-page()
+  -
+    const props = initComponent('media-page', attributes, []);
+
+  .media-page&attributes(attributes)
+    .page__wrapper
+      +breadcrumbs(items= [{ label: "Главная", link: "/home.html" },{ label: "Медиа", link: "#" }, ])
+      +media--grid()

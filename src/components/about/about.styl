@@ -1,0 +1,40 @@
+.about
+  position relative
+  &::before
+    position absolute
+    right -350px
+    bottom -200px
+    z-index -1
+    size 542px
+    background-color rgba(167, 19, 115, .4)
+    border-radius 100%
+    filter blur(150px)
+    content ''
+    +desktop()
+      filter blur(250px)
+      size 742px
+  &__box
+    display flex
+    flex-direction column
+    gap rem(56px)
+    +desktop()
+      gap rem(120px)
+
+  &__item
+    display flex
+    flex-direction column
+    gap rem(20px)
+    align-items flex-start
+    max-width 785px
+    +desktop()
+      gap rem(32px)
+      &:nth-child(odd)
+        margin-left auto
+        text-align left
+    &-title
+      margin 0
+    &-text
+      margin 0
+      font-size rem(20px)
+      +desktop()
+        font-size rem(32px)

@@ -1,0 +1,76 @@
+.switch
+  display inline-flex
+  flex-flow row nowrap
+  gap 12px
+  align-items flex-start
+  margin 0
+  cursor pointer
+  user-select-none()
+
+  & input
+    visually-hidden()
+
+  &__caption
+    flex 0 1 auto
+    margin-top -2px
+    color var(--text-color)
+    font-size rem(16px)
+    font-family $font-family
+    line-height 1.4
+
+  &__check
+    position relative
+    display inline-block
+    flex 0 0 auto
+    border 1px solid var(--text-color)
+    border-radius 100px
+    transition all .3s ease
+    size 32px 18px
+
+    &::after
+      position absolute
+      top 50%
+      left 3px
+      display block
+      background-color var(--text-blind-color)
+      border-radius 50%
+      transform translateY(-50%)
+      transition all .3s ease
+      content ""
+      size 10px
+
+  &:hover ^[0]__check
+    border-color var(--color-primary)
+    &::after
+      background-color var(--color-primary)
+
+  & input:checked + ^[0]__check
+    background-color var(--color-primary)
+    border-color var(--color-primary)
+    &::after
+      left 18px
+      background-color var(--color-white)
+
+  &:hover input:checked + ^[0]__check
+    background-color var(--color-primary)
+    border-color var(--color-primary)
+
+  & input.focus-visible + ^[0]__check
+    border-color var(--text-blind-color)
+    box-shadow 0 0 0 4px var(--color-focus-shadow)
+
+  & input:disabled + ^[0]__check
+    background-color #eee
+    border-color var(--text-blind-color)
+    &::after
+      background-color #ccc
+
+  & input:disabled + ^[0]__check + ^[0]__caption
+    opacity .5
+
+  & input:checked:disabled + ^[0]__check
+    background-color #ccc
+    border-color #ccc
+    &::after
+      background-color #fff
+

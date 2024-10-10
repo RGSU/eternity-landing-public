@@ -1,0 +1,10 @@
+mixin stars(rating)
+  -
+    const props = initComponent('stars', attributes, ['rating']);
+    
+    props.rating = props.rating || rating || 4;
+    const percents = Number(props.rating) * 20;
+    const style = `width: ${percents}%`;
+
+  .stars(title=props.rating)&attributes(attributes)
+    span(style=style).stars__rating

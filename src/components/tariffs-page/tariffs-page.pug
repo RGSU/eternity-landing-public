@@ -1,0 +1,13 @@
+include ../breadcrumbs/breadcrumbs
+include ../section-heading/section-heading
+include ../tariffs-table/tariffs-table
+
+mixin tariffs-page()
+  -
+    const props = initComponent('tariffs-page', attributes, []);
+
+  .tariffs-page&attributes(attributes)
+    .content-container
+      +breadcrumbs(items= [{ label: "Главная", link: "/home.html" },{ label: "Тарифы", link: "#" }, ])
+      +section-heading(mod="" title!="Тарифы" text!="После самой короткой анкеты в&nbsp;вашей жизни, вам нужно будет выбрать режим для формирования вашего цифрового образа").tariffs-page__heading
+      +tariffs-table()

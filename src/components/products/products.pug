@@ -1,0 +1,28 @@
+include ../section-heading/section-heading
+include ../carousel/carousel
+include ../product-card/product-card
+
+mixin products()
+  -
+    const props = initComponent('products', attributes, ['cards']);
+
+    const cards = [
+      { img: 'assets/img/cards/card-4.png', title: 'Ценности', text: 'Данная глава состоит из&nbsp;4х&nbsp;небольших разделов, с&nbsp;помощью которых вы&nbsp;сможете определить персональные, социальные, нишевые ценности и&nbsp;антиценности.' },
+      { img: 'assets/img/cards/card-5.png', title: 'Ценности', text: 'Следующая глава посвящена фиксации и&nbsp;изменениям ваших компетенций, потому что именно они лучше всего отражают вашу социальную сущность.' },
+      { img: 'assets/img/cards/card-6.png', title: 'Ценности', text: 'Третья глава окажется для вас самой долгой, но&nbsp;исполнить ее&nbsp;нужно. Поскольку это книга вашей памяти о&nbsp;себе, фактах вашей жизни, которые делают вас уникальной личностью.' },
+      { img: 'assets/img/cards/card-6.png', title: 'Ценности', text: 'Третья глава окажется для вас самой долгой, но&nbsp;исполнить ее&nbsp;нужно. Поскольку это книга вашей памяти о&nbsp;себе, фактах вашей жизни, которые делают вас уникальной личностью.' },
+    ]
+
+    props.cards = props.cards || cards;
+
+  .products&attributes(attributes)
+    .content-container.products__container
+      .products__box 
+        +section-heading(mod="" title!="Какие продукты вам <br> необходимо пройти?").products__heading
+      .products__cards
+        +carousel(mod="wide rounded products" data-pagination pagination)
+          - if (Array.isArray(props.cards))
+            each card, num in props.cards
+              +product-card(num=num img=card.img title!=card.title text!=card.text).swiper-slide
+        .products__visual-bg
+          img(src="assets/img/infinity-2.png" alt="")

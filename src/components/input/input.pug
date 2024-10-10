@@ -1,0 +1,9 @@
+include ../validator/validator
+
+mixin input()
+  -
+    const props = initComponent('input', attributes, []);
+    attributes.type = attributes.type || 'text';
+    setValidatorMsg(attributes);
+
+  input.input&attributes(attributes)

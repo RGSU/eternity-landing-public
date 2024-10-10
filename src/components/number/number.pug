@@ -1,0 +1,24 @@
+mixin number()
+  -
+    const params = { ...attributes };
+    const rootAttributes = {};
+    rootAttributes.class = mod2Classes(attributes, 'number');
+
+    attributes.type = attributes.type || "number";
+    attributes.value = attributes.value || 1;
+    attributes.min = attributes.min || 1;
+    attributes.step = attributes.step || 1;
+
+    const isInput = params.mod && params.mod.includes('input');
+
+    delete attributes.mod;
+  
+  .number(class=params.class)&attributes(rootAttributes)
+    - if (isInput)
+      input&attributes(attributes)
+      button(type="button" aria-label="Уменьшить").number__minus
+      button(type="button" aria-label="Увеличить").number__plus
+    - else
+      button(type="button" aria-label="Уменьшить").number__minus
+      input&attributes(attributes)
+      button(type="button" aria-label="Увеличить").number__plus

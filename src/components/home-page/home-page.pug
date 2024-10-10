@@ -1,0 +1,33 @@
+include ../graphs/graphs
+include ../fixed-nav/fixed-nav
+include ../faq-section/faq-section
+include ../tariffs/tariffs
+include ../about/about
+include ../intro/intro
+include ../media/media
+include ../products/products
+include ../ambassadors/ambassadors
+include ../manual/manual
+include ../banner/banner
+include ../popup/popup--product
+include ../popup/popup--success
+include ../popup/popup--error
+
+mixin home-page() 
+  .home-page&attributes(attributes)
+    +intro()
+    +about().scrolled-section#section-about
+    +manual().scrolled-section#section-work
+    +products().scrolled-section#section-products
+    +ambassadors().scrolled-section#section-ambassadors
+    +banner()
+    +tariffs--table().scrolled-section#section-tariffs
+    +faq-section().scrolled-section#section-faq
+    +media().scrolled-section#section-media
+  +fixed-nav()
+
+block append popups
+  +popup--product()
+  +popup--product-banner()
+  +popup--success()
+  +popup--error()

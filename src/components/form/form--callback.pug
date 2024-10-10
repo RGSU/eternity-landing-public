@@ -1,0 +1,24 @@
+include ./form
+include ../field/field
+include ../inputbox/inputbox
+include ../input/input
+include ../button/button
+include ../textarea/textarea
+
+mixin form--callback()
+  -
+    const props = initComponent('form', attributes, ['button-icon']);
+  
+    attributes.id = attributes.id || 'form-callback';
+
+  +form(method="POST" data-validate).form--callback&attributes(attributes)
+    .form__main
+      .form__fields
+        .field.form__field
+          +inputbox(label="Контакт для связи" for=`${attributes.id}-name`)
+            +input(type="text" name="name" id=`${attributes.id}-name` placeholder=" " required)
+        .field.form__field
+          +textarea(name="message" id=`${attributes.id}-msg` placeholder="Ваш вопрос" required)
+      .form__bottom
+        +button(type="submit" label="Отправить" icon=props['button-icon'] mod='gradient ' + (props['button-icon'] !== undefined) && 'icon-right gradient').form__submit.js-btn-gradient
+        .form__consent Нажимая на&nbsp;кнопку &laquo;Отправить&raquo; вы&nbsp;соглашаетесь&nbsp;с <a href="#">политикой конфиденциальности</a>

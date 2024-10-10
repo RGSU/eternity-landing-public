@@ -1,0 +1,66 @@
+.carousel
+  padding-bottom 24px
+
+  &__tools
+    display flex
+    gap 12px
+    align-items center
+    justify-content space-between
+    margin-top 32px
+    padding 0 rem(16px)
+    +above(48em)
+      gap 95px
+      justify-content center
+      margin-top 40px
+
+
+  &__item
+    box-sizing border-box
+    width 280px
+    height auto
+    +desktop()
+      width 360px
+
+  &--wide
+    overflow visible
+
+  &--offers
+    & ^[0]__item
+      width 280px
+      +desktop()
+        width 520px
+
+  &--reviews
+    & ^[0]__item
+      width 280px
+      +desktop()
+        width 380px
+
+  &--programs
+    & ^[0]__item
+      width 280px
+      +desktop()
+        width 320px
+
+  &--partners
+    overflow visible
+    +desktop()
+      overflow hidden
+
+  &--rounded
+    border-radius 30px
+
+  &--products
+    +above(48em)
+      & ^[0]__pagination
+        display none
+
+  &--ambassadors
+    position relative
+    width 100%
+    max-width 1920px
+    height 600px
+    overflow hidden
+    .swiper-wrapper
+      display flex
+      transform-origin center bottom

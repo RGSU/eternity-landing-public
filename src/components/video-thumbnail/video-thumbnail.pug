@@ -1,0 +1,37 @@
+mixin video-thumbnail()
+  -
+    const props = initComponent('video-thumbnail', attributes, ['provider', 'video-id', 'duration', 'likes', 'views', 'poster']);
+
+  .video-thumbnail(data-provider=props.provider data-video-id=props["video-id"])&attributes(attributes)
+    a(href=`https://rutube.ru/video/${props["video-id"]}/` data-video-popup).video-thumbnail__preview
+      img(loading="lazy" src=`https://rutube.ru/api/video/${props['video-id']}/thumbnail/?redirect=1` alt="")
+    .video-thumbnail__play
+      +icon("play-outline")
+
+mixin video-thumbnail--review()
+  -
+    const props = initComponent('video-thumbnail', attributes, ['provider', 'video-id', 'duration', 'likes', 'views', 'views', 'poster']);
+
+  .video-thumbnail(data-provider=props.provider data-video-id=props["video-id"])&attributes(attributes)
+    a(href=`https://rutube.ru/video/${props["video-id"]}/` data-video-popup).video-thumbnail__preview
+      img(loading="lazy" src=`https://rutube.ru/api/video/${props['video-id']}/thumbnail/?redirect=1` alt="")
+    .video-thumbnail__toolbar
+      .video-thumbnail__play
+        +icon("play")
+      button(type="button").video-thumbnail__likes
+        +icon("like")
+        span.video-thumbnail__likes-value!= props.likes
+      .video-thumbnail__views
+        +icon("view")
+        span.video-thumbnail__views-value!= props.views
+    .video-thumbnail__duration!= props.duration
+
+//- https://pic.rutubelist.ru/video/b9/9c/b99ce20f004570453f52b587f3bfa26d.jpg
+//- b99ce20f004570453f52b587f3bfa26d
+
+//- https://rutube.ru/api/video/b99ce20f004570453f52b587f3bfa26d/thumbnail/?redirect=1
+//- https://rutube.ru/api/video/b99ce20f004570453f52b587f3bfa26d/thumbnail
+
+//- https://rutube.ru/api/play/options/b99ce20f004570453f52b587f3bfa26d
+
+//- https://rutube.ru/video/4c67513f40be24c5addef355f043928b/

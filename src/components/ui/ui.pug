@@ -1,0 +1,82 @@
+mixin ui(title)
+  -
+    const params = { ...attributes };
+    delete attributes.title;
+    params.title = params.title || title;
+    
+  .ui&attributes(attributes)
+    - if (params.title)
+      +ui__title(params.title)
+    block
+
+mixin ui__title(title)
+  -
+    const params = { ...attributes };
+    delete attributes.title;
+    params.title = params.title || title;
+
+  h1.h1.ui__title&attributes(attributes)!= params.title
+
+mixin ui__section(title)
+  -
+    const params = { ...attributes };
+    delete attributes.title;
+    params.title = params.title || title;
+
+  section.ui__section&attributes(attributes)
+    - if (params.title)
+      +ui__section-title(params.title)
+    block
+
+mixin ui__section-title(title)
+  -
+    const params = { ...attributes };
+    delete attributes.title;
+    params.title = params.title || title;
+
+  h2.h2.ui__section-title&attributes(attributes)!= params.title
+
+mixin ui__subsection(title)
+  -
+    const params = { ...attributes };
+    delete attributes.title;
+    params.title = params.title || title;
+
+  section.ui__subsection&attributes(attributes)
+    - if (params.title)
+      +ui__subsection-title(params.title)
+    block
+
+mixin ui__subsection-title(title)
+  -
+    const params = { ...attributes };
+    delete attributes.title;
+    params.title = params.title || title;
+
+  h3.h3.ui__subsection-title&attributes(attributes)!= params.title
+
+mixin ui__sequence()
+  .ui__sequence&attributes(attributes)
+    block
+
+mixin ui__dark-block()
+  .ui__dark-block&attributes(attributes)
+    block
+
+mixin ui__test()
+  - const addClass = (classList, newClass) => {classList = (classList) ? classList + " " + newClass : newClass};
+
+  .ui__test&attributes(attributes)
+    p Class:#{attributes.class}
+
+mixin ui__color()
+  -
+    const params = { ...attributes };
+    delete attributes.name;
+    delete attributes.color;
+    params.name = params.name || "white";
+    params.color = params.color || "-";
+
+  .ui__color&attributes(attributes)
+    .ui__color-bg(style="background-color: " + params.color)
+    .ui__color-caption!= params.name

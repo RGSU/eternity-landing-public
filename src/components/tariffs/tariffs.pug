@@ -1,0 +1,54 @@
+include ../section-heading/section-heading
+include ../tariffs-card/tariffs-card
+include ../tariffs-table/tariffs-table
+include ../button/button
+
+mixin tariffs()
+  -
+    const props = initComponent('tariffs', attributes, ['cards']);
+
+    const cards = [
+      { title: "Пробный", price: "0", caption: "Тариф не&nbsp;требует оплаты", 
+        checks: [
+          "Доступ к&nbsp;описательным клипам", "Доступ к&nbsp;демо-версии продуктов", "Пример документа PDF"
+        ]
+      },
+      { title: "Базовый", price: "10 000", caption: "Оплата происходит единоразово", 
+        checks: [
+          "Доступ к&nbsp;описательным клипам", "Полный доступ к&nbsp;продуктам", "Файлы и&nbsp;документы о&nbsp;прохождении каждого продукта"
+        ]
+      },
+      { title: "Расширенный", price: "25 000", caption: "Оплата происходит единоразово", 
+        checks: [
+          "Полный отчет о&nbsp;прохождении продуктов", "Хранение цифрового образа в&nbsp;системе 3&nbsp;месяца", "Help desk 24/7", "Рекомендации от&nbsp;авторов продукта", "Вопросы эксперту", "Транскрибация, редактура текста", "Возможность вносить изменения в&nbsp;цифровой образ"
+        ]
+      },
+      { title: "Полный", price: "70 000", caption: "Оплата происходит единоразово", 
+        checks: [
+          "Полный отчет о&nbsp;прохождении продуктов", "Хранение цифрового образа в&nbsp;системе 3&nbsp;месяца", "Help desk 24/7", "Рекомендации от&nbsp;авторов продукта", "Вопросы эксперту", "Транскрибация, редактура текста", "Возможность вносить изменения в&nbsp;цифровой образ", "Режим «Наследство»"
+        ]
+      },
+    ]
+
+    props.cards = props.cards || cards;
+
+  section.tariffs&attributes(attributes)
+    .content-container
+      .tariffs__box 
+        +section-heading(mod="" title!="Тарифы" text!="После самой короткой анкеты в&nbsp;вашей жизни, вам нужно будет выбрать режим для формирования вашего цифрового образа")
+        .tariffs__inner
+          .tariffs__cards
+            - if (Array.isArray(props.cards))
+              each card in props.cards
+                +tariffs-card(mod="" title!=card.title price!=card.price caption!=card.caption link1!=card.link1 link2!=card.link2 checks!=card.checks)
+          +button(label="Подробнее" icon="arrow-right" mod="secondary-outline icon-right" ripple outline).tariffs__more-btn.js-btn-ripple
+
+mixin tariffs--table()
+  -
+    const props = initComponent('tariffs', attributes, ['cards']);
+
+  section.tariffs&attributes(attributes)
+    .content-container
+      .tariffs__box 
+        +section-heading(mod="" title!="Тарифы" text!="После самой короткой анкеты в&nbsp;вашей жизни, вам нужно будет выбрать режим для формирования вашего цифрового образа")
+        +tariffs-table()

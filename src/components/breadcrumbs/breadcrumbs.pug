@@ -1,0 +1,21 @@
+mixin breadcrumbs()
+  -
+    const props = initComponent('breadcrumbs', attributes, ['items']);
+
+    props.items = props.items || breadcrumbs;
+
+  .breadcrumbs&attributes(attributes)
+    .content-container 
+      nav.breadcrumbs__nav(aria-label="breadcrumb")
+        ol.breadcrumbs__list(itemscope itemtype="http://schema.org/BreadcrumbList")
+          - if (Array.isArray(props.items))
+            each item, num in props.items
+              - let isLast = num === props.items.length - 1
+              li.breadcrumbs__item(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class=isLast ? 'active' : '' aria-current=isLast ? 'page' : false)
+                if isLast
+                  span(itemprop="name")!= item.label
+                  meta(itemprop="position" content=num+1)
+                else
+                  a(href=item.link itemprop="item") 
+                    span(itemprop="name")!= item.label
+                    meta(itemprop="position" content=num+1)

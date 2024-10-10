@@ -1,0 +1,50 @@
+include ./form
+include ../field/field
+include ../inputbox/inputbox
+include ../input/input
+include ../textarea/textarea
+include ../button/button
+
+mixin form--consult()
+  -
+    const props = initComponent('form', attributes, ['button-icon', 'question-field', 'email-field']);
+  
+    attributes.id = attributes.id || 'form-consult';
+
+  +form(method="POST" data-validate).form--consult&attributes(attributes)
+    .form__main
+      .form__fields
+        .field.form__field
+          +inputbox(label="Ваше имя" for=`${attributes.id}-name`)
+            +input(type="text" name="name" id=`${attributes.id}-name` placeholder=" ")
+        +field(label="Ваш телефон" for=`${attributes.id}-phone` label-hidden).form__field
+          +input(type="tel" name="phone" id=`${attributes.id}-phone` placeholder="999 999 99 99" data-intl-tel-input required)
+        - if (props['question-field'])
+          .field.form__field
+            +inputbox(label="Ваш вопрос" for=`${attributes.id}-question` mod="question")
+              textarea(name="question" id=`${attributes.id}-question` placeholder=" " required)
+        - if (props['email-field'])
+          .field.form__field
+            +inputbox(label="Ваш e-mail" for=`${attributes.id}-email`)
+              +input(type="email" name="email" id=`${attributes.id}-email` placeholder=" ")
+      .form__bottom
+        +button(type="submit" label="Отправить заявку" icon=props['button-icon'] mod=(props['button-icon'] !== undefined) && 'icon-right')
+    .form__consent Нажимая на&nbsp;кнопку, вы&nbsp;соглашаетесь с&nbsp;<a href="#">политикой конфиденциальности</a>
+
+mixin form--consult-3()
+  -
+    const props = initComponent('form', attributes, ['button-icon', 'question-field']);
+  
+    attributes.id = attributes.id || 'form-consult';
+
+  +form(method="POST" data-validate).form--consult&attributes(attributes)
+    .form__main
+      .form__fields
+        .field.form__field
+          +inputbox(label="Ваше имя" for=`${attributes.id}-name` mod="border-white")
+            +input(type="text" name="name" id=`${attributes.id}-name` placeholder=" ")
+        +field(label="Ваш телефон" for=`${attributes.id}-phone` label-hidden).form__field
+          +input(type="tel" name="phone" id=`${attributes.id}-phone` placeholder="999 999 99 99" data-intl-tel-input required mod="border-white")
+      .form__bottom
+        +button(type="submit" label="Отправить заявку" icon=props['button-icon'] mod="secondary")
+    .form__consent Нажимая на&nbsp;кнопку, вы&nbsp;соглашаетесь с&nbsp;<a href="#">политикой конфиденциальности</a>

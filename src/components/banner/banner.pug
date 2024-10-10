@@ -1,0 +1,11 @@
+mixin banner()
+  -
+    const props = initComponent('banner', attributes, []);
+
+  section.banner&attributes(attributes)
+    .banner__wrapper
+      .banner__content 
+        h2.banner__title Научное <br> обоснование
+        +button(tag="a" label="Подробнее" mod="gradient" data-popup-open="#popup-product-banner").js-btn-gradient.banner__btn
+      .banner__visual
+        img(src="assets/img/visual.png" alt="")

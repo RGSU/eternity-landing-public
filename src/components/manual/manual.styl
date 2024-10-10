@@ -1,0 +1,137 @@
+.manual
+  display block
+  // margin-bottom 150px
+  // +desktop()
+  //   margin-bottom 0
+  &__box
+    position relative
+    display flex
+    flex-direction column
+    gap rem(32px)
+    +desktop()
+      gap rem(64px)
+    & ^[0]__visual-bg
+      position absolute
+      top -20px
+      left -120px
+      z-index -1
+      width 220px
+      transform rotate(340deg)
+      +desktop()
+        top -20px
+        width 340px
+  &__cards
+    position relative
+    display flex
+    flex-direction column
+    width 100%
+    counter-reset card
+
+  &__card
+    display flex
+    flex-direction column
+    gap 48px
+    width 100%
+    min-height 575px
+    max-height 100vh
+    padding rem(20px)
+    background-color var(--card-color)
+    border-radius 30px
+    transform-origin center center
+    backface-visibility hidden
+    will-change transform, filter
+    &:not(&:last-child)
+      margin-bottom 64px
+    +desktop()
+      flex-direction row
+      gap 64px
+      min-height 520px
+      padding rem(56px)
+    +above(80em)
+      gap 80px
+
+    &-left
+      display flex
+      // flex 0 0 auto
+      flex-direction column
+      gap 32px
+      align-items flex-start
+      justify-content space-between
+      // height 100%
+      max-height calc(100% - 240px)
+      +desktop()
+        gap 24px
+        min-width 410px
+        max-height 100%
+    &-heading
+      display flex
+      gap 24px
+      align-items center
+      justify-content space-between
+      width 100%
+      padding-bottom rem(16px)
+      border-bottom 1px solid rgba(255, 255, 255, .2)
+      +desktop()
+        padding-bottom rem(24px)
+      &-icon
+        display flex
+        align-items center
+        justify-content center
+        size 32px
+        background-color rgba(255, 255, 255, .1)
+        border-radius 8px
+        +desktop()
+          size 36px
+          .icon
+            size 20px
+
+        .icon
+          size 16px
+      &-count
+        font-size rem(14px)
+        +desktop()
+          font-size rem(16px)
+        &::before
+          content counter(card, decimal-leading-zero)
+          counter-increment card
+    &-content
+      display flex
+      flex 1 0 auto
+      flex-direction column
+      gap 16px
+      align-content flex-start
+      max-height 225px
+      padding-right 4px
+      custom-scrollbar(4px, rgba(255, 255, 255, .2), rgba(255, 255, 255, .6))
+      &::-webkit-scrollbar-track
+      &::-webkit-scrollbar
+      &::-webkit-scrollbar-thumb
+        border-radius 4px
+      +desktop()
+        gap 20px
+        max-width 530px
+        max-height 320px
+    &-title
+      margin 0
+    &-text
+      height 100%
+      margin 0
+      font-size rem(16px)
+      +desktop()
+        font-size rem(18px)
+    &-img
+      // max-height 190px
+      overflow hidden
+      text-align center
+      border-radius 11px
+      +desktop()
+        max-width 640px
+        // height fit-content
+        // max-height 400px
+        text-align left
+      img
+        object-fit cover
+        object-position center
+        vertical-align top
+        +desktop()
+          height auto

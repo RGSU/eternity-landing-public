@@ -1,0 +1,25 @@
+//- Компонент для вывода svg иконки
+  - По-умолчанию используются "инлайновые" иконки. Из папки "assets/icons/" 
+    берется svg-файл и вставляется в HTML-код как инлайновый элемент
+  - При наличии параметра "is-sprite" иконки вставляются из svg-спрайта 
+    (предварительно требуется в системе сборки активировать генерацию svg-спрайта)
+
+  Примеры:
+  +icon("search")
+  +icon(icon="search")
+  +icon("search")(is-sprite)
+  +icon(icon="search" is-sprite)
+
+mixin icon(icon)
+  -
+    const props = initComponent('icon', attributes, ['icon', 'is-sprite']);
+    icon = icon || props.icon || '';
+
+  - if (props['is-sprite'])
+    svg(class=`icon icon--${icon}`)&attributes(attributes)
+      use(xlink:href=`assets/img/sprite.svg?v=1#${icon}`)
+  - else
+    icon(src=`assets/icons/${icon}.svg` class=`icon icon--${icon}`)&attributes(attributes)
+
+mixin icon--sprite(icon)
+  +icon(icon)(is-sprite)&attributes(attributes)

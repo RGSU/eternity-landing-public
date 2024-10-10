@@ -1,0 +1,140 @@
+.tariffs-table
+  display none
+  flex-direction column
+  background-color var(--card-color)
+  &--desktop
+    +above(1440px)
+      display flex
+    border-radius 30px
+    & ^[0]__row
+      display grid
+      grid-template-columns repeat(auto-fill, minmax(270px, 1fr))
+  &--mobile
+    display flex
+    +above(1440px)
+      display none
+    &:nth-child(2)
+      border-radius 30px 30px 0 0
+    &:last-child
+      border-radius 0 0 30px 30px
+    & ^[0]__head
+      grid-template-columns repeat(auto-fill, minmax(50%, 1fr))
+    & ^[0]__cell
+      &--cat
+        justify-content center
+      &:not(&--cat)
+        display inline-block
+        width 50%
+  &__wrapper
+    display flex
+    flex-direction column
+
+  &__head
+    z-index 1
+    display grid
+    grid-template-columns repeat(auto-fill, minmax(270px, 1fr))
+    & ^[0]__th
+      &:not(&:last-child)
+        border-right 2px solid rgba(255,255,255, .2)
+      &:first-child
+        border-radius 30px 0 0 0
+        &:after
+          border-radius 0 0 0 30px
+      &:last-child
+        border-radius 0 30px 0 0
+        &:after
+          border-radius 0 0 30px 0
+
+  &__th
+    position relative
+    display flex
+    flex-direction column
+    justify-content space-between
+    padding rem(14px)
+    background-color var(--card-color)
+    +above(1440px)
+      padding rem(24px) rem(31px) rem(5px) rem(31px)
+    &:after
+      position absolute
+      bottom -23px
+      left 0
+      width 100%
+      height 24px
+      background linear-gradient(180deg, var(--card-color) 0%, transparent 100%)
+      content ''
+    &-title
+      font-weight 600
+      font-size rem(18px)
+      +above(48em)
+        font-size rem(24px)
+    &-content
+      margin-top 14px
+      +above(48em)
+        margin-top 24px
+    &-price
+      margin-bottom 8px
+      font-weight 600
+      font-size rem(18px)
+      +above(48em)
+        font-size rem(24px)
+    &-caption
+      color var(--text-blind-color)
+      font-size rem(12px)
+      +above(48em)
+        font-size rem(14px)
+    &-btn
+      margin-top 14px
+      font-size rem(14px)
+      +above(1440px)
+        margin-top 24px
+        font-size rem(16px)
+        .button__inner
+          font-size rem(16px)
+      .button__inner
+        font-size rem(14px)
+
+  &__body
+    display flex
+    flex-direction column
+    & ^[0]__row
+      &:first-child
+        & ^[0]__cell
+          padding-top rem(14px)
+          +above(1440px)
+            padding-top rem(59px)
+      &:last-child
+        & ^[0]__cell
+          padding-bottom rem(24px)
+
+  &__row
+    & ^[0]__cell
+      +below(1440px)
+        &:nth-child(2)
+          border-right 2px solid rgba(255,255,255, .2)
+      +above(1440px)
+        &:not(&:last-child)
+          border-right 2px solid rgba(255,255,255, .2)
+
+
+  &__cell
+    padding rem(14px)
+    +above(1440px)
+      padding rem(24px) rem(32px) 0 rem(32px)
+    &:not(&--cat)
+      display flex
+      align-items center
+      justify-content center
+      text-align center
+    &-caption
+      color var(--text-blind-color)
+      font-size rem(14px)
+    &--cat
+      display flex
+      gap 12px
+      align-items center
+      justify-content space-between
+      padding 0 rem(14px) 0 rem(14px)
+      +above(1440px)
+        padding rem(24px) rem(24px) 0 rem(24px)
+
+

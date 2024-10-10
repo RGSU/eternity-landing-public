@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+include ../components/tariffs-page/tariffs-page
+
+block append data
+  -
+    page.name = 'tariffs';
+    page.title = 'Тарифы';
+
+block main
+  +tariffs-page()

@@ -1,0 +1,12 @@
+include ../icon/icon
+
+mixin logo()
+  -
+    const props = initComponent('logo', attributes, ['tag']);
+    props.tag = props.tag || "a";
+
+  #{props.tag}.logo&attributes(attributes)
+    span.logo__image
+      +icon("logo").logo__icon
+    span.logo__caption
+      span.logo__title ВЕЧНОСТЬ

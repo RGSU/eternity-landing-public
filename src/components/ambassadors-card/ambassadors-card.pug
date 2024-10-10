@@ -1,0 +1,11 @@
+mixin ambassadors-card()
+  -
+    const props = initComponent('ambassadors-card', attributes, ['img', 'name', 'post', 'transform']);
+
+  .ambassadors-card&attributes(attributes)
+    .ambassadors-card__img 
+      img(src=props.img alt=props.name)
+    .ambassadors-card__content
+      span.ambassadors-card__name!= props.name 
+      span.ambassadors-card__post!= props.post
+        

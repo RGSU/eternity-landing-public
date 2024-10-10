@@ -1,0 +1,12 @@
+include ../icon/icon
+
+mixin tooltip()
+  -
+    const props = initComponent('tooltip', attributes, ['text']);
+
+  .tooltip&attributes(attributes)
+    button(type="button" title="Пояснение").tooltip__btn
+      +icon('info').tooltip__icon
+    .tooltip__window 
+      .tooltip__window-inner
+        .tooltip__window-text!= props.text

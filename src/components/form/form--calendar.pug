@@ -1,0 +1,30 @@
+include ./form
+include ../field/field
+include ../select/select
+include ../checkbox/checkbox
+include ../button/button
+
+mixin form--calendar()
+  -
+    const props = initComponent('form', attributes, []);
+  
+    attributes.id = attributes.id || 'form-calendar';
+
+  +form(method="POST" data-validate).form--calendar&attributes(attributes)
+    .form__main
+      .form__fields
+        +field(label="Тип мероприятия" for=`${attributes.id}-type` label-hidden).form__field
+          +select(name="type" id=`${attributes.id}-type` placeholder="Тип мероприятия" options=eventTypes data-custom-select)
+        +field(label="Уровень подготовки" for=`${attributes.id}-level` label-hidden).form__field
+          +select(name="level" id=`${attributes.id}-level` placeholder="Уровень подготовки" options=optionsLevels data-custom-select)
+        +field(label="Форма обучения" for=`${attributes.id}-form` label-hidden).form__field
+          +select(name="level" id=`${attributes.id}-form` placeholder="Форма обучения" options=optionsStudyForms data-custom-select)
+        +field(label="Основа обучения" for=`${attributes.id}-basis` label-hidden).form__field
+          +select(name="basis" id=`${attributes.id}-basis` placeholder="Основа обучения" options=optionsBasis data-custom-select)
+        .form__field
+          +checkbox(name="budgetary" id=`${attributes.id}-budgetary` label="Для бюджетников" checked).form__checkbox
+
+      .form__bottom
+        .form__buttons
+          +button(type="reset" label="Сбросить" mod="secondary").form__reset
+          +button(type="submit" label="Применить").form__submit

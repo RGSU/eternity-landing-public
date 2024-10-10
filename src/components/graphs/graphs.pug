@@ -1,0 +1,21 @@
+include ../graphs-item/graphs-item
+
+mixin graphs()
+  -
+    const props = initComponent('graphs', attributes, ['items', 'caption']);
+
+    const graphs = [
+      { mod: "mini", title: "от 50 000 ₽", description: "без опыта", caption: "Начинающий" },
+      { mod: "medium blue", title: "от 120 000 ₽ ", description: "1-3 года", caption: "Опытный" },
+      { mod: "large", title: "от 360 000 ₽ ", description: "от 3х лет", caption: "pro" },
+    ];
+
+    props.items = props.items || graphs;
+
+  .graphs&attributes(attributes)
+    - if (props.caption)
+      span.graphs__caption!= props.caption
+    .graphs__box
+      - if (Array.isArray(props.items))
+        each item in props.items
+          +graphs-item(mod=item.mod title=item.title description=item.description caption=item.caption)

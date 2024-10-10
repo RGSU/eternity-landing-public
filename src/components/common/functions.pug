@@ -1,0 +1,25 @@
+-
+  const initComponent = (componentName, attributes, propsArray = []) => {
+    const props = { ...attributes };
+    attributes.class = mod2Classes(attributes, componentName);
+    propsArray.forEach((item) => {
+      delete attributes[item];
+    });
+    delete attributes['root-attributes'];
+    return props;
+  };
+
+  const mod2Classes = (attributes, baseClass, mod = '') => {
+    const mods = mod || attributes.mod || '';
+    const modArray = Array.isArray(mods) ? mods : mods ? mods.split(' ').filter(Boolean) : [];
+    const classes = modArray.map(item => `${baseClass}--${item}`);
+    if (attributes.class) classes.push(attributes.class);
+    delete attributes.mod;
+    return classes;
+  };
+
+  const uniqID = (prefix = 'id-') => prefix + Math.random().toString(36).substr(2, 9);
+
+  const stripHash = (str) => str.replace('#','');
+
+  const cacheReset = (url) => `${url}?${Date.now()}`;

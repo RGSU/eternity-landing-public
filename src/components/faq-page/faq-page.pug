@@ -1,0 +1,11 @@
+include ../faq-section/faq-section
+include ../breadcrumbs/breadcrumbs
+
+mixin faq-page()
+  -
+    const props = initComponent('faq-page', attributes, []);
+
+  .faq-page&attributes(attributes)
+    .page__wrapper
+      +breadcrumbs(items= [{ label: "Главная", link: "/home.html" },{ label: "Часто задаваемые вопросы", link: "#" }, ])
+      +faq-section()

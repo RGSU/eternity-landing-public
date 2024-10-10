@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+include ../components/news-page/news-page
+
+block append data
+  -
+    page.name = 'news';
+    page.title = 'Устранение уязвимостей в системе безопасности с помощью искусственного интеллекта';
+
+block main
+  +news-page()

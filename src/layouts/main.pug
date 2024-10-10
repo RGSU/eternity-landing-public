@@ -1,0 +1,19 @@
+//- main (default) layout
+
+extends core
+
+include ../components/header/header
+include ../components/footer/footer
+//- include ../components/popup/popup--product
+
+block page
+  .page__bg-vector
+  .page__bg-vector
+  .page__bg-vector
+  +header().page__header
+  main.page__main
+    block main
+  +footer().page__footer
+
+//- block append popups
+//-   +popup--product()

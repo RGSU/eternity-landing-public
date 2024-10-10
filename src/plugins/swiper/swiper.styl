@@ -1,0 +1,26 @@
+@import "swiper/swiper-bundle.css"
+
+.swiper-slide
+  box-sizing border-box
+  height auto
+
+.swiper-pagination-bullets
+  position absolute
+  bottom 0 !important
+  display flex
+  gap 6px
+  justify-content center
+
+.swiper-pagination-bullet
+  flex 1 1 4px
+  max-width 37px
+  height 4px
+  margin 0 !important
+  background-color rgba(255, 255, 255, .2)
+  border-radius 4px
+  transition all .2s ease
+  +desktop()
+    height 6px
+
+.swiper-pagination-bullet-active
+  background-color var(--color-white)

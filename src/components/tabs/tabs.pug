@@ -1,0 +1,40 @@
+//-
+  +tabs(items=[
+    { id: "section-1", label: "Заголовок 1", active: true },
+    { id: "section-2", label: "Заголовок 2" },
+    { id: "section-3", label: "Заголовок 2" }
+  ]).document__tabs
+    +tabs__panel(id="section-1")
+    +tabs__panel(id="section-2")
+    +tabs__panel(id="section-3")
+
+  +tabs-panel(id="section-1")
+  +tabs-panel(id="section-2")
+  +tabs-panel(id="section-3")
+
+mixin tabs(items)
+  -
+    const props = initComponent('tabs', attributes, ['items']);
+  
+    props.items = props.items || items || [];
+  
+  .tabs&attributes(attributes)
+    .tabs__tabs
+      ul.tabs__items
+        - if (Array.isArray(props.items))
+          each item in props.items
+            li.tabs__item
+              - if (item.href)
+                a(href=item.href class = item.active && "active").tabs__tab!= item.label
+              - else
+                button(type="button" data-target="#" + item.id aria-controls=item.id aria-expanded=(item.active ? "true" : "false") class = item.active && "active").tabs__tab!= item.label
+      .tabs__items-slider
+    block
+
+mixin tabs__panel()
+  .tabs__panel&attributes(attributes)
+    block
+
+mixin tabs-panel()
+  .tabs-panel&attributes(attributes)
+    block

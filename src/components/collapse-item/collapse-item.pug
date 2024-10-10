@@ -1,0 +1,13 @@
+include ../collapse/collapse
+
+mixin collapse-item()
+  -
+    const props = initComponent('collapse-item', attributes, ['heading', 'content-id']);
+
+  .collapse-item&attributes(attributes)
+    .collapse-item__top
+      .collapse-item__header
+        h3.collapse-item__title!= props.heading
+      button(type="button" data-collapse=`#${props['content-id']}` aria-expanded="false" aria-controls=props['content-id']).collapse-item__toggle
+    +collapse-collapse(id=props['content-id'] data-expanded="false").collapse-item__content
+      block

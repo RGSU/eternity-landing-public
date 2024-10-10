@@ -1,0 +1,15 @@
+include ../section-heading/section-heading
+include ../breadcrumbs/breadcrumbs
+include ../news-section/news-section
+
+mixin news-page()
+  -
+    const props = initComponent('news-page', attributes, []);
+
+  .news-page&attributes(attributes)
+
+    .page__wrapper 
+      .content-container
+        +breadcrumbs(items=[{label: "Главная", link: "/"},{label: "Медиа", link: "#"},{label: "Детальная страница новости", link: "#"},])
+        +section-heading(mod="news" date="13 cентября" datetime="2024-09-13" title!="Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта").news-page__heading
+      +news-section()

@@ -1,0 +1,173 @@
+.number
+  display inline-flex
+  flex-flow row nowrap
+
+  input
+    display inline-block
+    flex 0 0 auto
+    width 62px
+    height 42px
+    padding 0
+    color var(--color-grey-600)
+    font-size rem(16px)
+    font-family $font-family
+    font-variant-numeric lining-nums proportional-nums
+    line-height 1.4
+    text-align center
+    background-color var(--color-white)
+    border-color var(--color-grey-200)
+    border-style solid
+    border-width 1px
+    &:focus-visible
+      border-color var(--color-blue-400)
+      outline none
+
+  &__minus
+  &__plus
+    position relative
+    display block
+    flex 0 0 auto
+    width 62px
+    height 42px
+    padding 0
+    background transparent
+    border-color var(--color-grey-200)
+    border-width 1px
+    cursor pointer
+    &:focus-visible
+      outline 1px solid var(--color-blue)
+
+  &__minus
+    border-style solid none solid solid
+    border-radius 8px 0 0 8px
+    &::before
+      position absolute
+      top 50%
+      left 50%
+      display block
+      width 16px
+      height 1px
+      margin-top -1px
+      margin-left -8px
+      background-color var(--color-grey-600)
+      transition all .2s ease
+      content ""
+    &:hover
+      &::before
+        background-color var(--color-blue-400)
+
+  &__plus
+    border-style solid solid solid none
+    border-radius 0 8px 8px 0
+    &::before
+      position absolute
+      top 50%
+      left 50%
+      display block
+      width 15px
+      height 1px
+      margin-top -1px
+      margin-left -8px
+      background-color var(--color-grey-600)
+      transition all .2s ease
+      content ""
+    &::after
+      position absolute
+      top 50%
+      left 50%
+      display block
+      width 1px
+      height 15px
+      margin-top -8px
+      margin-left -1px
+      background-color var(--color-grey-600)
+      transition all .2s ease
+      content ""
+    &:hover
+      &::before
+      &::after
+        background-color var(--color-blue-400)
+
+  &--input
+    position relative
+    display block
+
+    input
+      display block
+      width 100%
+      height rem(52px)
+      padding 10px 60px 10px 22px
+      color var(--text-color)
+      font-weight 400
+      font-size rem(16px)
+      font-family $font-family
+      font-variant-numeric lining-nums proportional-nums
+      line-height 1.5
+      text-align left
+      background-color var(--color-white)
+      background-clip padding-box
+      border 1px solid var(--color-grey-200)
+      border-radius 10px
+      transition all .2s ease
+      appearance none
+      &:invalid
+        box-shadow none
+      &:hover
+        background-color #f2f8ff
+        border-color #e0efff
+      &:focus-visible
+        background-color var(--color-white)
+        border-color #3388ff
+        outline none
+      &::placeholder
+        color var(--color-grey-400)
+        opacity 1
+      &:disabled
+        opacity .5
+        pointer-events none
+      &:-webkit-autofill
+        transition background-color 10000000s ease-out
+
+    & ^[0]__minus
+      position absolute
+      top 50%
+      right 20px
+      display block
+      width 20px
+      height 20px
+      background transparent
+      border none
+      border-radius 0
+      &::before
+        position absolute
+        top 50%
+        left 50%
+        display block
+        width 8px
+        height 8px
+        margin-left -4px
+        background-color transparent
+        border-color var(--color-grey-600)
+        border-width 2px
+        transform rotate(45deg)
+        content ""
+      &::after
+        display none
+      &:hover
+      &:focus-visible
+        &::before
+          background-color transparent
+          border-color var(--color-blue-400)
+
+
+    & ^[0]__plus
+      transform translateY(-100%)
+      &::before
+        margin-top -2px
+        border-style solid none none solid
+
+    & ^[0]__minus
+      &::before
+        margin-top -5px
+        border-style none solid solid none
+

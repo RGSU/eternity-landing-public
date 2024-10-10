@@ -1,0 +1,96 @@
+include ../section-heading/section-heading
+include ../media-card/media-card
+include ../tabs/tabs
+include ../carousel/carousel
+
+mixin media()
+  -
+    const props = initComponent('media', attributes, []);
+
+    const tabs = [
+      { id: 'media-panel-1', label: 'Новости' },
+      { id: 'media-panel-2', label: 'Видео' },
+    ];
+    
+    const cards1 = [
+      { img: "assets/img/cards/card-1.png", date: '13 cентября', datetime: '2024-09-13', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { img: "assets/img/cards/card-2.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { img: "assets/img/cards/card-3.png", date: '15 cентября', datetime: '2024-09-15', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+    ];
+
+    const cards2 = [
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+    ];
+
+    props.tabs = props.tabs || tabs;
+
+  .media&attributes(attributes)
+    .content-container
+      .media__box 
+        +section-heading(mod="" title!="Медиа" tabs=tabs)
+        .media__content
+          .media__panels
+            +tabs-panel(id="media-panel-1").media__panel
+              .media__panel-inner
+                +carousel(mod="media rounded" data-pagination pagination)
+                  - if (Array.isArray(cards1))
+                    each card in cards1
+                      +media-card(img=card.img date=card.date datetime=card.datetime title!=card.title).swiper-slide
+            +tabs-panel(id="media-panel-2").media__panel
+              .media__panel-inner
+                +carousel(mod="media rounded" data-pagination pagination)
+                  - if (Array.isArray(cards2))
+                    each card in cards2
+                      +media-card--video(provider=card.provider poster=card.poster video=card.video video-id=card.videoId img=card.img date=card.date datetime=card.datetime title!=card.title).media-card--video.swiper-slide
+          +button(label="Подробнее" icon="arrow-right" mod="secondary-outline icon-right" ripple outline).media__more-btn.js-btn-ripple
+        .media__visual-bg
+          img(src="assets/img/infinity-2.png" alt="")
+
+mixin media--grid()
+  -
+    const props = initComponent('media', attributes, []);
+
+    const tabs = [
+      { id: 'media-panel-1', label: 'Новости' },
+      { id: 'media-panel-2', label: 'Видео' },
+    ];
+    
+    const cards1 = [
+      { img: "assets/img/cards/card-1.png", date: '13 cентября', datetime: '2024-09-13', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { img: "assets/img/cards/card-2.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { img: "assets/img/cards/card-3.png", date: '15 cентября', datetime: '2024-09-15', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { img: "assets/img/cards/card-2.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { img: "assets/img/cards/card-3.png", date: '15 cентября', datetime: '2024-09-15', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+    ];
+
+    const cards2 = [
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+      { provider: 'rutube', videoId: '4c67513f40be24c5addef355f043928b', poster: "assets/img/cards/card-1.png", date: '14 cентября', datetime: '2024-09-14', title: "Устранение уязвимостей в&nbsp;системе безопасности с&nbsp;помощью искусственного интеллекта" },
+    ];
+
+    props.tabs = props.tabs || tabs;
+
+  .media.media--grid&attributes(attributes)
+    .content-container
+      .media__box 
+        +section-heading(mod="" title!="Медиа" tabs=tabs mainTitle)
+        .media__content
+          .media__panels
+            +tabs-panel(id="media-panel-1").media__panel
+              .media__panel-inner
+                - if (Array.isArray(cards1))
+                  each card in cards1
+                    +media-card(img=card.img date=card.date datetime=card.datetime title!=card.title).swiper-slide
+            +tabs-panel(id="media-panel-2").media__panel
+              .media__panel-inner
+                - if (Array.isArray(cards2))
+                  each card in cards2
+                    +media-card--video(provider=card.provider poster=card.poster video=card.video video-id=card.videoId img=card.img date=card.date datetime=card.datetime title!=card.title).media-card--video.swiper-slide
+          +button(label="Показать больше" icon="arrow-right" mod="secondary-outline icon-right" ripple outline).media__more-btn.js-btn-ripple
+        .media__visual-bg
+          img(src="assets/img/infinity-2.png" alt="")

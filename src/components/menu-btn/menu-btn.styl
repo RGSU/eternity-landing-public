@@ -1,0 +1,76 @@
+.menu-btn
+  display flex
+  gap 12px
+  align-items center
+  justify-content center
+  size 36px
+  padding 8px
+  color var(--color-white)
+  font-weight 600
+  font-size rem(18px)
+  background-color var(--primary-color)
+  border none
+  border-radius 50%
+  backface-visibility hidden
+  transition background-color .2s
+  &:hover
+  &:focus-visible
+    background-color var(--primary-dark-color)
+  +above(64em)
+    size 48px
+    padding 12px
+
+  &__caption
+    display none
+    +above(64em)
+      display inline-block
+      flex 0 0 auto
+
+  &__icon
+    position relative
+    display block
+    width 16px
+    height 16px
+    +above(64em)
+      width 18px
+      height 20px
+
+  &__line
+    position absolute
+    top 50%
+    left 50%
+    display block
+    size 15px 1.5px
+    margin-top -.5px
+    margin-left -7.5px
+    background-color var(--color-white)
+    border-radius 4px
+    transform-origin center center
+    transition transform .1s, background-color .2s
+    +above(64em)
+      size 18px 1.5px
+      margin-top -.5px
+      margin-left -8.5px
+
+    &:nth-child(1)
+      transform translate(0,-6px)
+      ^[0].active &
+        transform rotate(45deg) translate(0px, 0px)
+      +above(64em)
+        transform translate(0,-6px)
+        ^[0].active &
+          transform rotate(45deg) translate(0px, 0px)
+
+    &:nth-child(2)
+      ^[0].active &
+        opacity 0
+
+    &:nth-child(3)
+      transform translate(0,6px)
+      ^[0].active &
+        transform rotate(-45deg) translate(0px, 0px)
+      +above(64em)
+        transform translate(0,6px)
+        ^[0].active &
+          transform rotate(-45deg) translate(0px, 0px)
+

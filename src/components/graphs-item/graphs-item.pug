@@ -1,0 +1,10 @@
+mixin graphs-item()
+  -
+    const props = initComponent('graphs-item', attributes, ['title', 'description', 'caption']);
+
+  .graphs-item&attributes(attributes)
+    .graphs-item__top
+      .graphs-item__title!= props.title
+    .graphs-item__bottom
+      .graphs-item__description!= props.description
+      .graphs-item__caption!= props.caption

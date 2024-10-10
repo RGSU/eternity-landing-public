@@ -1,0 +1,157 @@
+.input-file
+  &__main
+    display flex
+    flex-flow row wrap
+    gap 12px 16px
+    align-items center
+    +above(85em)
+      flex-wrap nowrap
+
+  &__field
+    position relative
+    display inline-block
+    flex 0 0 auto
+    width 100%
+    +above(30em)
+      width auto
+
+    ^[0]--completed &
+      width calc(100% - 66px)
+      +above(30em)
+        width auto
+
+    input
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      width 100%
+      height 100%
+      cursor pointer
+      opacity 0
+
+  &__button
+    width 100%
+    pointer-events none
+    +above(30em)
+      width auto
+
+  &__btn-clear
+    display none
+    size 50px
+    flex 0 0 auto
+    align-items center
+    justify-content center
+    padding 0
+    ^[0]--completed &
+      display inline-flex
+    .icon
+      flex 0 0 auto
+      size 24px
+
+  &__hint
+    margin 0
+    color var(--color-grey-500)
+    font-weight 400
+    font-size rem(15px)
+    line-height 1.4
+    // ^[0]--extra &
+    //   margin-right auto
+
+  &__quantity
+    flex 0 1 auto
+    margin 0
+    color $color-text
+    font-weight 400
+    font-size 15px
+
+  &__quantity-value
+    color var(--color-blue-500)
+
+  &__files
+    display flex
+    flex-flow row wrap
+    gap 16px
+    margin rem(16px) 0 0
+    color var(--color-grey-900)
+    font-size rem(16px)
+    &:empty
+      display none
+      margin 0
+    +below(80em)
+      min-height 0px !important
+
+  &__file
+    display inline-flex
+    flex 0 1 auto
+    flex-flow row nowrap
+    gap 10px
+    align-items center
+
+  &__file-img
+    display block
+    flex 0 0 auto
+    size 50px
+    overflow hidden
+    border 1px solid var(--color-grey-200)
+    border-radius 8px
+    img
+      width 100%
+      height 100%
+      object-fit cover
+      object-position center
+
+  &__file-icon
+    display inline-flex
+    flex 0 0 auto
+    align-items center
+    justify-content center
+    size 50px
+    border 1px solid var(--color-grey-200)
+    border-radius 8px
+    svg
+      size 32px
+      fill var(--color-blue-400)
+
+  &__file-title
+    margin 0
+    color var(--color-grey-900)
+    font-weight 400
+    font-size rem(14px)
+    text-break()
+    &:not(:last-child)
+      margin-bottom 4px
+
+  &__file-size
+    margin 0
+    color var(--color-grey-500)
+    font-weight 400
+    font-size rem(14px)
+
+  &__dropzone
+    display none
+    align-items center
+    justify-content center
+    margin 0 0 rem(20px)
+    +desktop()
+      display flex
+      gap 20px
+      min-height 260px
+      padding 40px
+      border 1px dashed var(--color-grey-400)
+      border-radius 12px
+      transition border-color .2s
+    ^[0].is-highlighted &
+      border-color var(--color-hover)
+
+    // ^[0]--completed &
+    //  display none
+
+  &__drop-label
+    color var(--color-grey-700)
+    font-weight 400
+    font-size rem(16px)
+    text-align center
+
+

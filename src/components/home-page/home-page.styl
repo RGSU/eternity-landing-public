@@ -1,0 +1,31 @@
+.home-page
+  position relative
+  z-index 1
+  --gap rem(120px)
+  display flex
+  flex-direction column
+  gap var(--gap)
+  // padding-top var(--gap)
+  padding-bottom var(--gap)
+  +desktop()
+    --gap rem(200px)
+
+  &__title
+    display block
+    margin 0 0 rem(24px)
+    color var(--color-grey-80)
+    font-weight 600
+    font-size rem(24px)
+    line-height 1.25
+    +desktop()
+      margin-bottom rem(40px)
+      font-size rem(32px)
+
+  &__double
+    --columns 1
+    display grid
+    grid-template-columns repeat(var(--columns), minmax(0, 1fr))
+    gap rem(24px) rem(40px)
+    +desktop()
+      --columns 2
+      align-items start

@@ -1,0 +1,37 @@
+include ../icon/icon
+
+mixin field()
+  -
+    const props = initComponent('field', attributes, ['label', 'for', 'label-for', 'label-hidden', 'label-transparent', 'required', 'hint']);
+    props['label-for'] = props['label-for'] || props.for || '';
+
+  .field&attributes(attributes)
+    - if (props.label)
+      +field__label(for=props['label-for'] label!=props.label hidden=props['label-hidden'] transparent=props['label-transparent'] required=props.required)
+    block
+    - if (props.hint)
+      .field__hint!= props.hint
+
+//- field__label
+mixin field__label()
+  -
+    const props = initComponent('field__label', attributes, ['label', 'hidden', 'transparent', 'required']);
+
+    if (props.required) props.label = `${props.label} *`;
+
+  label(class=props.hidden && "visually-hidden" class=props.transparent && "is-transparent").field__label&attributes(attributes)!= props.label
+    block
+
+//- field__control
+mixin field__control()
+  .field__control&attributes(attributes)
+    block
+
+//- field__hint
+mixin field__hint(hint)
+  -
+    const props = initComponent('field__hint', attributes, ['hint']);
+    hint = hint || props.hint
+
+  .field__hint&attributes(attributes)!= hint
+    block

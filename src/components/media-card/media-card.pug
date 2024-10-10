@@ -1,0 +1,37 @@
+include ../video-player/video-player
+include ../video-thumbnail/video-thumbnail
+include ../icon/icon
+
+mixin media-card()
+  -
+    const props = initComponent('media-card', attributes, ['img', 'date', 'datetime', 'title']);
+
+  a(href="#").media-card&attributes(attributes)
+    span.media-card__top 
+      img(src=props.img alt="Картинка новости").media-card__img
+      span.media-card__top-group Читать
+        +icon("arrow-right")
+    span.media-card__content 
+      time(datetime=props.datetime).media-card__date!= props.date
+      span.media-card__title!= props.title
+
+//- mixin media-card--video()
+//-   -
+//-     const props = initComponent('media-card', attributes, ['img', 'date', 'datetime', 'title']);
+
+//-   article.media-card&attributes(attributes)
+//-     - if (props.video)
+//-       +video-player--review(video=props.video poster=props.poster provider=props.provider video-id=props['video-id'] stars=props.stars name=props.name).media-card__player
+//-     - if (props.provider)
+//-       +video-thumbnail--review(mod="review" provider=props.provider video-id=props['video-id']).media-card__thumbnail
+
+mixin media-card--video()
+  -
+    const props = initComponent('media-card', attributes, ['datetime', 'date', 'video', 'poster', 'provider', 'video-id', 'title']);
+
+  article.media-card&attributes(attributes)
+    .media-card__top
+      +video-thumbnail(video=props.video poster=props.poster provider=props.provider video-id=props['video-id'] duration=props.duration likes=props.likes views=props.views).media-card__thumbnail
+    .media-card__content
+      time(datetime=props.datetime).media-card__date!= props.date
+      h5.media-card__title!= props.title

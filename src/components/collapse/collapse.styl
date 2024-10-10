@@ -1,0 +1,48 @@
+.collapse
+  padding-bottom 1px
+
+  &:not(.show)
+    display none
+
+.collapse-toggle
+  position relative
+  flex 0 0 auto
+  size 48px
+  padding 0
+  background-color var(--color-grey-10)
+  border none
+  border-radius 50%
+  transition all .3s ease
+  &[aria-expanded="true"]
+    background-color var(--color-grey-40)
+    transform rotate(45deg)
+  &::before
+    position absolute
+    top 50%
+    left 50%
+    display block
+    width 19px
+    height 1px
+    margin-top -1px
+    margin-left -10px
+    background-color var(--text-color)
+    transition background-color .3s ease, transform .2s
+    content ""
+  &::after
+    position absolute
+    top 50%
+    left 50%
+    display block
+    width 1px
+    height 19px
+    margin-top -10px
+    margin-left -1px
+    background-color var(--text-color)
+    transition all .3s ease
+    content ""
+  &:hover
+  &:focus-visible
+    background-color var(--color-blue-40)
+    &::before
+    &::after
+      background-color var(--color-blue-80)

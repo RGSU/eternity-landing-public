@@ -1,0 +1,50 @@
+.graphs-item
+  display flex
+  flex-direction column
+  justify-content space-between
+  min-height 200px
+  padding rem(24px)
+  text-align center
+  background-color var(--color-grey-20)
+  border-radius 20px
+  +above(95em)
+    min-height 0
+  &--mini
+    +above(95em)
+      height 240px
+  &--medium
+    +above(95em)
+      height 390px
+  &--large
+    +above(95em)
+      height 556px
+  &--blue
+    color var(--color-white)
+    background-color var(--color-blue-60)
+    & ^[0]__description
+      color var(--color-white)
+
+  &__title
+    font-weight 600
+    font-size rem(32px)
+
+  &__bottom
+    display flex
+    flex-direction row
+    flex-wrap wrap
+    gap 8px
+    justify-content space-between
+    +above(48em)
+      flex-direction column
+      gap 0
+      justify-content center
+
+  &__description
+    color var(--color-blue)
+    font-weight 600
+    font-size rem(24px)
+
+  &__caption
+    font-weight 600
+    font-size rem(24px)
+

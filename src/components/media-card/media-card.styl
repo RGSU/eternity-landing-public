@@ -1,0 +1,99 @@
+.media-card
+  display flex
+  flex-direction column
+  min-height 350px
+  overflow hidden
+  text-decoration none
+  background-color var(--card-color)
+  border-radius 30px
+  +desktop()
+    min-height 485px
+  &--video
+    & ^[0]__top
+      &:after
+        display none
+  &:not(&--video)
+    &:hover
+      & ^[0]__top
+        &:after
+          opacity 1
+          backdrop-filter blur(20px)
+        &-group
+          top 50%
+          transform translate(-50%, -50%)
+
+  &__top
+    position relative
+    height 230px
+    overflow hidden
+    border-radius 30px
+    &:after
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background rgba(255, 255, 255, .15)
+      border-radius 30px
+      opacity 0
+      backdrop-filter blur(0px)
+      transition all .3s ease
+      content ''
+
+      @media (hover none)
+        display none
+    +desktop()
+      height 250px
+    &-group
+      position absolute
+      top 100%
+      left 50%
+      z-index 1
+      display flex
+      gap 10px
+      align-items center
+      justify-content center
+      padding rem(12px) rem(12px) rem(12px) rem(16px)
+      color var(--color-white)
+      background-color var(--primary-color)
+      border-radius 30px
+      transform translate(-50%, 0)
+      transition all .3s ease .1s
+      &:hover
+        background-color var(--primary-dark-color)
+
+      @media (hover none)
+        display none
+
+
+  &__img
+    width 100%
+    height 100%
+    object-fit cover
+    object-position center
+    vertical-align top
+
+  &__content
+    display flex
+    flex-direction column
+    gap 16px
+    align-items flex-start
+    padding rem(20px)
+    +desktop()
+      padding rem(32px)
+
+  &__date
+    padding rem(4px) rem(10px)
+    font-size rem(12px)
+    background-color rgba(255, 255, 255, .1)
+    border-radius 30px
+    +desktop()
+      font-size rem(14px)
+
+  &__title
+    margin 0
+    font-weight 600
+    font-size rem(18px)
+    line-height 1.3
+    +desktop()
+      font-size rem(24px)

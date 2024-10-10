@@ -1,0 +1,19 @@
+include ../tabs/tabs
+
+mixin section-heading()
+  -
+    const props = initComponent('section-heading', attributes, ['title', 'text', 'tabs', 'date', 'datetime', 'mainTitle']);
+
+  .section-heading&attributes(attributes)
+    .section-heading__wrapper
+      - if (props.date)
+        time(datetime=props.datetime).section-heading__date!= props.date
+      - if (props.title)
+        - if (props.mainTitle)
+          h1.section-heading__title!= props.title
+        - else
+          h2.section-heading__title!= props.title
+    - if (props.text)
+      p.section-heading__text!= props.text
+    - if (props.tabs)
+      +tabs(items=props.tabs).media__tabs.media__tabs--ver-2

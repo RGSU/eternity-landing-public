@@ -1,0 +1,16 @@
+include ../icon/icon
+
+mixin product-card()
+  -
+    const props = initComponent('product-card', attributes, ['num', 'img', 'title', 'text']);
+
+  article.product-card&attributes(attributes)
+    .product-card__top 
+      span.product-card__chapter!= `Глава ${props.num + 1}` 
+    .product-card__img 
+      img(src=props.img alt="")
+    .product-card__content  
+      h4.product-card__title!= props.title
+      p.product-card__text!= props.text
+      button(type="button" data-popup-open="#popup-product").product-card__button
+        +icon("plus")

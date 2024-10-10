@@ -1,0 +1,117 @@
+.ambassadors
+  display block
+
+  &__heading
+    margin-bottom rem(32px)
+    +desktop()
+      margin-bottom rem(64px)
+
+  &__carousel
+    &--ghorizontal
+      display block
+      height 100%
+      padding-left 16px
+      +above(48em)
+        display none
+      .carousel__tools
+        padding-left 0
+
+    &--wheel
+      position relative
+      display none
+      height 650px
+      padding-top 580px
+      overflow hidden
+      +above(48em)
+        display block
+      // overflow hidden
+
+    &-wrapper
+      position absolute
+      top calc(50% - 3.6rem)
+      left 50%
+      width 1px
+      height 1px
+      transform translate3d(0px, 125rem, 0px)
+
+    &-ui
+      position relative
+      display flex
+      gap 65px
+      align-items center
+      justify-content center
+
+    &-nav
+    .carousel__button-prev
+    .carousel__button-next
+      display flex
+      align-items center
+      justify-content center
+      size 36px
+      padding 0
+      color var(--color-white)
+      background-color transparent
+      border 1px solid rgba(255,255,255, .2)
+      border-radius 50%
+      transition all .2s ease
+      &:hover
+      &:focus-visible
+        color var(--color-white)
+        background-color var(--primary-color)
+        border-color var(--primary-color)
+      .icon
+        size 20px
+      +above(48em)
+        size 48px
+        .icon
+          size 24px
+
+
+    &-counter
+    .carousel__counter
+      display flex
+      gap 5px
+      align-items center
+      justify-content center
+      width 50px
+      font-size rem(12px)
+      -webkit-user-select none
+      -khtml-user-select none
+      -moz-user-select none
+      -ms-user-select none
+      -webkit-touch-callout none
+      user-select none
+      pointer-events none
+      &-total
+        color rgba(255,255,255, .2)
+      &-current
+        color var(--color-white)
+      +above(48em)
+        width 70px
+        font-size rem(14px)
+
+  &__path
+    position absolute
+    top 0
+    left 0
+    z-index -1
+    width 250rem
+    max-width none
+    height 250rem
+    transform translate(-50%, -50%)
+    touch-action none
+    stroke none
+
+  //     .swiper-wrapper
+  //       position absolute
+  //       left 50%
+  //       width 380vw
+  //       height 380vw
+  //       transform translate(-50%, 0%) translate3d(.16px, 0px, 0px)
+  //       cursor grab
+  //       translate none
+  //       rotate none
+  //       scale none
+  //       user-select none
+  //       touch-action none
+

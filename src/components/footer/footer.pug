@@ -1,0 +1,29 @@
+include ../button/button
+include ../form/form--callback
+include ../link-item/link-item
+
+mixin footer()
+  footer.footer&attributes(attributes)
+    .footer__container
+      .footer__grid
+        .footer__card.footer__card--callback.footer-anim
+          .footer__card-heading
+            h3.footer__card-title Остались вопросы?
+            p.footer__card-text Оставьте свой вопрос в&nbsp;форме. Наши специалисты ответят вам настолько быстро, насколько это возможно!
+          .footer__form
+            +form--callback(id="form-callback-footer")
+        .footer__card.footer__contacts.footer-anim
+          .footer__card-heading
+            h3.footer__card-title Контакты
+          .footer__contacts-links
+            //- +link-item(href="+78001111111" type="tel" label="+7 800 111 11 11" caption="Для граждан РФ").footer__contacts-item
+            //- +link-item(href="+78001111111" type="tel" label="+7 800 111 11 11" caption="Для иностранных граждан").footer__contacts-item
+            +link-item(label="Телеграм-бот" icon="social-telegram").footer__contacts-item
+          img(src="assets/img/infinity.png" alt="").footer__contacts-visual
+        .footer__copy.footer-anim
+          .footer__copy-left 
+            +link-item(href="#" label!="Информация о&nbsp;АО").footer__copy-link
+            +link-item(href="#" label!="Информация о&nbsp;партнёрах").footer__copy-link
+            +link-item(href="#" label!="Политика конфиденциальности и&nbsp;защита персональных данных").footer__copy-link
+          .footer__copy-right
+            .footer__copy-label Вечность, 2024

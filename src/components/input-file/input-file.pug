@@ -1,0 +1,47 @@
+include ../icon/icon
+include ../button/button
+
+mixin input-file()
+  -
+    const params = { ...attributes };
+
+    const rootAttributes = {}
+    rootAttributes.class = mod2Classes(attributes, 'input-file');
+
+    delete attributes["button-caption"];
+    delete attributes.hint;
+    delete attributes.files;
+    delete attributes.mod;
+
+    attributes.type = attributes.type  || "file";
+
+    params["button-caption"] = params["button-caption"] || "Загрузить файлы";
+    params.hint = params.hint || "Объем 1&nbsp;файла: не&nbsp;более 2&nbsp;mb";
+
+    let quantity = 0;
+    if (params.files)
+      quantity = params.files.length;
+
+  .input-file(class=params.files && "input-file--completed" class=params.extra && "input-file--extra")&attributes(rootAttributes)
+    .input-file__dropzone
+      .input-file__drop-label Перетащите файлы сюда
+
+    .input-file__main
+      .input-file__field
+        input()&attributes(attributes)
+        +button(type="button" caption=params["button-caption"] tabindex="-1" mod="secondary").input-file__button
+      +button(type="button" icon="trash" title="Очистить" mod="outline").input-file__btn-clear
+        +icon("trash")
+      - if (params.hint)
+        .input-file__hint!= params.hint
+    .input-file__files
+      - if (params.files)
+        each file, num in params.files
+          .input-file__file
+            - if (file.img)
+              .input-file__file-img
+                img(src=file.img alt="")
+            .input-file__file-caption
+              .input-file__file-title!= file.title
+              - if (file.size)
+                .input-file__file-size!= file.size

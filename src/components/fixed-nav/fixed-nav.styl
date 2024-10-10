@@ -1,0 +1,47 @@
+.fixed-nav
+  position fixed
+  bottom 24px
+  left 50%
+  z-index 3
+  display none
+  width 100%
+  max-width max-content
+  padding 4px
+  overflow hidden
+  background rgba(255, 255, 255, .1)
+  border-radius 30px
+  transform translateX(-50%)
+  backdrop-filter blur(50px)
+  transition all .2s ease
+  +below(64em)
+    display none !important
+  +desktop()
+    display flex
+  &__container
+    position relative
+    display flex
+    gap 2px
+  &__link
+    padding rem(12px) rem(20px)
+    color var(--text-blind-color)
+    text-decoration none
+    border-radius 30px
+    transition all .2s ease
+    &:hover
+      @media (hover none)
+        background initial
+    &:hover
+      color var(--text-blind-color)
+      background rgba(255, 255, 255, .1)
+    &.active
+      color var(--color-white)
+  &__slider
+    position absolute
+    bottom 0
+    z-index -1
+    height 100%
+    background-color rgba(255, 255, 255, .1)
+    border-radius 30px
+    transition all .5s ease
+  &--hidden
+    opacity 0
